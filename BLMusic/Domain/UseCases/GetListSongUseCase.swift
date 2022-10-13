@@ -10,7 +10,7 @@ import Foundation
 protocol GetListSongUseCase {
     var  songRepository: SongRepository { get }
     
-    func getListSong(completion: @escaping (Result<[Song], Error>) -> Void)
+    func getListSong(completion: @escaping (Result<[Song], Error>) -> Void) -> Cancellable?
 }
 
 final class GetListSongUseCaseImpl: GetListSongUseCase {
@@ -20,8 +20,8 @@ final class GetListSongUseCaseImpl: GetListSongUseCase {
         self.songRepository = songRepository
     }
     
-    func getListSong(completion: @escaping (Result<[Song], Error>) -> Void) {
-        self.songRepository.getListSong { result in
+    func getListSong(completion: @escaping (Result<[Song], Error>) -> Void) -> Cancellable? {
+        return songRepository.getListSong { result in
             switch result {
             case .success(let songs):
                 let songs = songs.map({ SongMapper.map($0) })

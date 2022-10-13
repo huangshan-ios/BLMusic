@@ -13,6 +13,12 @@ final class SongListViewModel: ViewModelType {
     private let downloadSongUseCase: DownloadSongUseCase
     private let playSongUseCase: PlaySongUseCase
     
+    private var getListSongCancellable: Cancellable? {
+        willSet {
+            getListSongCancellable?.cancel()
+        }
+    }
+    
     private var songs: [Song] = []
     
     var loadSongsObservable: (() -> Void)?
@@ -33,7 +39,7 @@ final class SongListViewModel: ViewModelType {
     
     func loadNewSongs() {
         loadingObservable?(true)
-        getListSongUseCase.getListSong { [weak self] result in
+        getListSongCancellable = getListSongUseCase.getListSong { [weak self] result in
             guard let self = self else {
                 return
             }
@@ -45,6 +51,7 @@ final class SongListViewModel: ViewModelType {
                 self.errorObservable?(error)
             }
             self.loadingObservable?(false)
+            self.getListSongCancellable = nil
         }
     }
     
