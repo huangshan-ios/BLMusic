@@ -8,14 +8,14 @@
 import Foundation
 
 protocol NetworkSevice {
-    func request<T: Codable>(
+    func request<T: Decodable>(
         _ request: NetworkRequest,
         completion: @escaping (Result<T, Error>) -> Void
     )
 }
 
 final class NetworkServiceImpl: NetworkSevice {
-    func request<T: Codable>(
+    func request<T: Decodable>(
         _ request: NetworkRequest,
         completion: @escaping (Result<T, Error>) -> Void
     ) {
