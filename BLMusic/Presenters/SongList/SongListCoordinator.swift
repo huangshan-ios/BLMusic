@@ -10,8 +10,12 @@ import Foundation
 final class SongListCoordinator: CoordinatorType {
     
     override func start() {
-        let songListViewController = SongListViewController()
-        navigationController.viewControllers = [songListViewController]
+        let viewModel = DependenciesProvider.provideSongListViewModel()
+        let coordinator = DependenciesProvider.provideSongListCoordinator()
+        let viewController = SongListViewController(viewModel: viewModel,
+                                                    coordinator: coordinator,
+                                                    controller: SongListViewController.self)
+        navigationController.viewControllers = [viewController]
     }
     
 }
