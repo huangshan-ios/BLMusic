@@ -16,10 +16,6 @@
 		F73B9B6728F81D8900C43A00 /* AppConfigurationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B6628F81D8900C43A00 /* AppConfigurationHelper.swift */; };
 		F73B9B6B28F8516D00C43A00 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B6A28F8516D00C43A00 /* ViewModelType.swift */; };
 		F73B9B6D28F8518E00C43A00 /* ViewControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B6C28F8518E00C43A00 /* ViewControllerType.swift */; };
-		F73B9B7028F8528700C43A00 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B6F28F8528700C43A00 /* NetworkRequest.swift */; };
-		F73B9B7228F8529D00C43A00 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B7128F8529D00C43A00 /* NetworkError.swift */; };
-		F73B9B7428F852B000C43A00 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B7328F852B000C43A00 /* NetworkService.swift */; };
-		F73B9B7728F856A400C43A00 /* LocalDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B7628F856A400C43A00 /* LocalDatabaseService.swift */; };
 		F73B9B7A28F8576600C43A00 /* SongListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B7828F8576600C43A00 /* SongListViewController.swift */; };
 		F73B9B7B28F8576600C43A00 /* SongListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F73B9B7928F8576600C43A00 /* SongListViewController.xib */; };
 		F73B9B7D28F8577600C43A00 /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B7C28F8577600C43A00 /* CoordinatorType.swift */; };
@@ -27,6 +23,10 @@
 		F73B9B8228F8580000C43A00 /* SongListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B8128F8580000C43A00 /* SongListCoordinator.swift */; };
 		F73B9B8528F8594200C43A00 /* NSObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B8428F8594200C43A00 /* NSObject+Extensions.swift */; };
 		F73B9B8728F859DC00C43A00 /* IndicatorLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B8628F859DC00C43A00 /* IndicatorLoader.swift */; };
+		F73B9B9328F860F600C43A00 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B8E28F860F600C43A00 /* NetworkService.swift */; };
+		F73B9B9428F860F600C43A00 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B8F28F860F600C43A00 /* NetworkRequest.swift */; };
+		F73B9B9528F860F600C43A00 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B9028F860F600C43A00 /* NetworkError.swift */; };
+		F73B9B9628F860F600C43A00 /* LocalDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B9228F860F600C43A00 /* LocalDatabaseService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,10 +62,6 @@
 		F73B9B6628F81D8900C43A00 /* AppConfigurationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurationHelper.swift; sourceTree = "<group>"; };
 		F73B9B6A28F8516D00C43A00 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		F73B9B6C28F8518E00C43A00 /* ViewControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerType.swift; sourceTree = "<group>"; };
-		F73B9B6F28F8528700C43A00 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
-		F73B9B7128F8529D00C43A00 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		F73B9B7328F852B000C43A00 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		F73B9B7628F856A400C43A00 /* LocalDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDatabaseService.swift; sourceTree = "<group>"; };
 		F73B9B7828F8576600C43A00 /* SongListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListViewController.swift; sourceTree = "<group>"; };
 		F73B9B7928F8576600C43A00 /* SongListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SongListViewController.xib; sourceTree = "<group>"; };
 		F73B9B7C28F8577600C43A00 /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
@@ -73,6 +69,10 @@
 		F73B9B8128F8580000C43A00 /* SongListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListCoordinator.swift; sourceTree = "<group>"; };
 		F73B9B8428F8594200C43A00 /* NSObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extensions.swift"; sourceTree = "<group>"; };
 		F73B9B8628F859DC00C43A00 /* IndicatorLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorLoader.swift; sourceTree = "<group>"; };
+		F73B9B8E28F860F600C43A00 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		F73B9B8F28F860F600C43A00 /* NetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		F73B9B9028F860F600C43A00 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		F73B9B9228F860F600C43A00 /* LocalDatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalDatabaseService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,8 +125,8 @@
 			children = (
 				F73B9B5C28F81BA700C43A00 /* Application */,
 				F73B9B5D28F81BC400C43A00 /* Presenters */,
-				F73B9B5F28F81BD800C43A00 /* Datas */,
 				F73B9B5E28F81BCF00C43A00 /* Domains */,
+				F73B9B8928F860EB00C43A00 /* Datas */,
 				F73B9B6028F81BEB00C43A00 /* Common */,
 				F73B9B8328F8593700C43A00 /* Extensions */,
 				F73B9B6128F81BF800C43A00 /* Resources */,
@@ -173,15 +173,6 @@
 			children = (
 			);
 			path = Domains;
-			sourceTree = "<group>";
-		};
-		F73B9B5F28F81BD800C43A00 /* Datas */ = {
-			isa = PBXGroup;
-			children = (
-				F73B9B8828F85F7F00C43A00 /* Services */,
-			);
-			name = Datas;
-			path = "Dất";
 			sourceTree = "<group>";
 		};
 		F73B9B6028F81BEB00C43A00 /* Common */ = {
@@ -241,24 +232,6 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		F73B9B6E28F8524400C43A00 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				F73B9B6F28F8528700C43A00 /* NetworkRequest.swift */,
-				F73B9B7128F8529D00C43A00 /* NetworkError.swift */,
-				F73B9B7328F852B000C43A00 /* NetworkService.swift */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
-		F73B9B7528F8563300C43A00 /* LocalDatabase */ = {
-			isa = PBXGroup;
-			children = (
-				F73B9B7628F856A400C43A00 /* LocalDatabaseService.swift */,
-			);
-			path = LocalDatabase;
-			sourceTree = "<group>";
-		};
 		F73B9B8028F857F100C43A00 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,13 +249,39 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		F73B9B8828F85F7F00C43A00 /* Services */ = {
+		F73B9B8928F860EB00C43A00 /* Datas */ = {
 			isa = PBXGroup;
 			children = (
-				F73B9B7528F8563300C43A00 /* LocalDatabase */,
-				F73B9B6E28F8524400C43A00 /* Networking */,
+				F73B9B8C28F860F600C43A00 /* Services */,
+			);
+			path = Datas;
+			sourceTree = "<group>";
+		};
+		F73B9B8C28F860F600C43A00 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F73B9B8D28F860F600C43A00 /* Networking */,
+				F73B9B9128F860F600C43A00 /* LocalDatabase */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		F73B9B8D28F860F600C43A00 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F73B9B8E28F860F600C43A00 /* NetworkService.swift */,
+				F73B9B8F28F860F600C43A00 /* NetworkRequest.swift */,
+				F73B9B9028F860F600C43A00 /* NetworkError.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		F73B9B9128F860F600C43A00 /* LocalDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				F73B9B9228F860F600C43A00 /* LocalDatabaseService.swift */,
+			);
+			path = LocalDatabase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,19 +415,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F73B9B9328F860F600C43A00 /* NetworkService.swift in Sources */,
 				F73B9B8528F8594200C43A00 /* NSObject+Extensions.swift in Sources */,
-				F73B9B7028F8528700C43A00 /* NetworkRequest.swift in Sources */,
 				F73B9B8228F8580000C43A00 /* SongListCoordinator.swift in Sources */,
 				F73B9B7A28F8576600C43A00 /* SongListViewController.swift in Sources */,
 				F73B9B8728F859DC00C43A00 /* IndicatorLoader.swift in Sources */,
 				F73B9B7F28F857B000C43A00 /* AppCoordinator.swift in Sources */,
-				F73B9B7228F8529D00C43A00 /* NetworkError.swift in Sources */,
 				F73B9B6B28F8516D00C43A00 /* ViewModelType.swift in Sources */,
 				F73B9B6728F81D8900C43A00 /* AppConfigurationHelper.swift in Sources */,
-				F73B9B7728F856A400C43A00 /* LocalDatabaseService.swift in Sources */,
-				F73B9B7428F852B000C43A00 /* NetworkService.swift in Sources */,
+				F73B9B9628F860F600C43A00 /* LocalDatabaseService.swift in Sources */,
 				F73B9B7D28F8577600C43A00 /* CoordinatorType.swift in Sources */,
 				F73B9B2D28F81B8000C43A00 /* AppDelegate.swift in Sources */,
+				F73B9B9528F860F600C43A00 /* NetworkError.swift in Sources */,
+				F73B9B9428F860F600C43A00 /* NetworkRequest.swift in Sources */,
 				F73B9B6D28F8518E00C43A00 /* ViewControllerType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
