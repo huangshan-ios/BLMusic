@@ -10,7 +10,7 @@ import Foundation
 protocol SongRepository {
     var networkService: NetworkSevice { get }
     
-    func getListSong(completion: @escaping (Result<[SongDTO], Error>) -> Void)
+    func getListSong(completion: @escaping (Result<[SongDTO], Error>) -> Void) -> Cancellable?
 }
 
 final class SongRepositoryImpl: SongRepository {
@@ -20,8 +20,9 @@ final class SongRepositoryImpl: SongRepository {
         self.networkService = networkService
     }
     
-    func getListSong(completion: @escaping (Result<[SongDTO], Error>) -> Void) {
-        networkService.request(SongsRequest(), completion: { (result: Result<DataDTO<[SongDTO]>, Error>) in
+    func getListSong(completion: @escaping (Result<[SongDTO], Error>) -> Void) -> Cancellable? {
+        let task = RepositoryTask()
+        task.networkTask = networkService.request(SongsRequest(), completion: { (result: Result<DataDTO<[SongDTO]>, Error>) in
             switch result {
             case .success(let response):
                 completion(.success(response.data))
@@ -29,5 +30,7 @@ final class SongRepositoryImpl: SongRepository {
                 completion(.failure(error))
             }
         })
+        
+        return task
     }
 }

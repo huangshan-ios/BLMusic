@@ -11,17 +11,18 @@ protocol NetworkSevice {
     func request<T: Decodable>(
         _ request: NetworkRequest,
         completion: @escaping (Result<T, Error>) -> Void
-    )
+    ) -> NetworkCancellable?
 }
 
 final class NetworkServiceImpl: NetworkSevice {
     func request<T: Decodable>(
         _ request: NetworkRequest,
         completion: @escaping (Result<T, Error>) -> Void
-    ) {
+    ) -> NetworkCancellable? {
+        var cancellable: NetworkCancellable?
         do {
             let urlRequest = try request.makeRequest()
-            URLSession.shared.dataTask(with: urlRequest) { data, _, error in
+            let task = URLSession.shared.dataTask(with: urlRequest) { data, _, error in
                 
                 if let error = error {
                     switch error {
@@ -45,9 +46,13 @@ final class NetworkServiceImpl: NetworkSevice {
                 
                 completion(.failure(NetworkError.somethingWentWrong))
                 
-            }.resume()
+            }
+            task.resume()
+            cancellable = task
         } catch let error {
             completion(.failure(NetworkError.invalidRequest(error)))
         }
+        
+        return cancellable
     }
 }
