@@ -96,7 +96,7 @@ extension SongListViewController: UITableViewDelegate, UITableViewDataSource {
                 return
             }
             switch state {
-            case .inCloud:
+            case .onCloud:
                 self.viewModel.downloadSong(at: indexPath.row)
             case .ready:
                 self.viewModel.playSong(at: indexPath.row)

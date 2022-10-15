@@ -36,7 +36,7 @@ class SongTableViewCell: UITableViewCell {
         
         // TODO: Enhance this one by custom a button class to switching state and also change the progress
         switch songData.state {
-        case .inCloud:
+        case .onCloud:
             downloadProgressView.progress = 0
             downloadProgressView.isHidden = true
             songStateImageView.isHidden = false

@@ -91,6 +91,15 @@ final class SongListViewModel: ViewModelType {
         downloadSongCancellables[song.url] = cancellable
     }
     
+    /*
+     This is a function for cancel download file
+     func cancelDownloadSong(at index: Int) {
+         let song = songs[index]
+         downloadSongCancellables[song.url]??.cancel()
+         update(songState: .onCloud, and: nil, at: index)
+     }
+     */
+    
     func playSong(at index: Int) {
         playSongUseCase.play(song: songs[index]) { [weak self] result in
             guard let self = self else {
