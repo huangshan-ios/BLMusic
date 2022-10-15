@@ -12,6 +12,13 @@ class SongTableViewCell: UITableViewCell {
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var songStateImageView: UIImageView!
     
+    var onTapActionButton: (() -> Void)?
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        onTapActionButton = nil
+    }
+    
     func setupSongView(_ song: Song) {
         songNameLabel.text = song.name
         
@@ -23,6 +30,10 @@ class SongTableViewCell: UITableViewCell {
             break
         }
         songStateImageView.image = image
+    }
+    
+    @IBAction func onTapActionButton(_ sender: Any) {
+        onTapActionButton?()
     }
     
 }

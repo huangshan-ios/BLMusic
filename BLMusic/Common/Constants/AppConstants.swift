@@ -16,4 +16,11 @@ struct AppConstants {
     struct URL {
         static let songs = "Songs.json"
     }
+    
+    struct Document {
+        static var cacheDirectoryURL: Foundation.URL {
+            let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            return documentsUrl.appendingPathComponent("cache")
+        }
+    }
 }
