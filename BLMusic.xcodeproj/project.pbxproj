@@ -10,7 +10,6 @@
 		F73B9B2D28F81B8000C43A00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B2C28F81B8000C43A00 /* AppDelegate.swift */; };
 		F73B9B3628F81B8200C43A00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F73B9B3528F81B8200C43A00 /* Assets.xcassets */; };
 		F73B9B3928F81B8200C43A00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F73B9B3728F81B8200C43A00 /* LaunchScreen.storyboard */; };
-		F73B9B4428F81B8200C43A00 /* BLMusicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B4328F81B8200C43A00 /* BLMusicTests.swift */; };
 		F73B9B4E28F81B8200C43A00 /* BLMusicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B4D28F81B8200C43A00 /* BLMusicUITests.swift */; };
 		F73B9B5028F81B8200C43A00 /* BLMusicUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B4F28F81B8200C43A00 /* BLMusicUITestsLaunchTests.swift */; };
 		F73B9B6728F81D8900C43A00 /* AppConfigurationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9B6628F81D8900C43A00 /* AppConfigurationHelper.swift */; };
@@ -87,7 +86,6 @@
 		F73B9B3828F81B8200C43A00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F73B9B3A28F81B8200C43A00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F73B9B3F28F81B8200C43A00 /* BLMusicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BLMusicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F73B9B4328F81B8200C43A00 /* BLMusicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLMusicTests.swift; sourceTree = "<group>"; };
 		F73B9B4928F81B8200C43A00 /* BLMusicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BLMusicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F73B9B4D28F81B8200C43A00 /* BLMusicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLMusicUITests.swift; sourceTree = "<group>"; };
 		F73B9B4F28F81B8200C43A00 /* BLMusicUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLMusicUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -204,7 +202,9 @@
 		F73B9B4228F81B8200C43A00 /* BLMusicTests */ = {
 			isa = PBXGroup;
 			children = (
-				F73B9B4328F81B8200C43A00 /* BLMusicTests.swift */,
+				F73B9C0828FB462600C43A00 /* Base */,
+				F73B9C0528FB45F400C43A00 /* Data */,
+				F73B9C0428FB45EC00C43A00 /* Domain */,
 			);
 			path = BLMusicTests;
 			sourceTree = "<group>";
@@ -498,6 +498,43 @@
 			path = CoreDataStorage;
 			sourceTree = "<group>";
 		};
+		F73B9C0428FB45EC00C43A00 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				F73B9C0628FB45F800C43A00 /* Mock */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		F73B9C0528FB45F400C43A00 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F73B9C0728FB45FD00C43A00 /* Mock */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F73B9C0628FB45F800C43A00 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		F73B9C0728FB45FD00C43A00 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		F73B9C0828FB462600C43A00 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -684,7 +721,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F73B9B4428F81B8200C43A00 /* BLMusicTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
