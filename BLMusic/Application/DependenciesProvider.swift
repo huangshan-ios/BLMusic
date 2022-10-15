@@ -13,13 +13,16 @@ class DependenciesProvider {
         let networkService = NetworkServiceImpl()
         let downloadFileService = DownloadFileServiceImpl()
         let fileManagerService = FileManagerServiceImpl()
+        let localDatabaseService = LocalDatabaseServiceImpl()
         let audioService = AudioServiceImpl()
         
-        let songRepository = SongRepositoryImpl(networkService: networkService, downloadFileService: downloadFileService)
+        let songRepository = SongRepositoryImpl(networkService: networkService,
+                                                downloadFileService: downloadFileService,
+                                                fileManagerService: fileManagerService,
+                                                localDatabaseService: localDatabaseService)
         
         let getListSongUseCase = GetListSongUseCaseImpl(songRepository: songRepository)
-        let downLoadSongUseCase = DownloadSongUseCaseImpl(songRepository: songRepository,
-                                                          fileManagerService: fileManagerService)
+        let downLoadSongUseCase = DownloadSongUseCaseImpl(songRepository: songRepository)
         let playSongUseCase = PlaySongUseCaseImpl(audioService: audioService)
         
         return SongListViewModel(getListSongUseCase: getListSongUseCase,

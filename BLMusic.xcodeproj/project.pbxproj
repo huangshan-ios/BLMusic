@@ -57,6 +57,9 @@
 		F73B9BF028FB197700C43A00 /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BEF28FB197700C43A00 /* FileManagerService.swift */; };
 		F73B9BF228FB1BB500C43A00 /* FileStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BF128FB1BB500C43A00 /* FileStorageError.swift */; };
 		F73B9BF428FB1C9B00C43A00 /* AudioError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BF328FB1C9B00C43A00 /* AudioError.swift */; };
+		F73B9BF728FB20D300C43A00 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BF628FB20D300C43A00 /* CoreDataStorage.swift */; };
+		F73B9BFA28FB211400C43A00 /* CoreDataStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BF828FB211400C43A00 /* CoreDataStorage.xcdatamodeld */; };
+		F73B9C0028FB246000C43A00 /* CoreDataStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BFF28FB246000C43A00 /* CoreDataStorageError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +136,9 @@
 		F73B9BEF28FB197700C43A00 /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
 		F73B9BF128FB1BB500C43A00 /* FileStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorageError.swift; sourceTree = "<group>"; };
 		F73B9BF328FB1C9B00C43A00 /* AudioError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioError.swift; sourceTree = "<group>"; };
+		F73B9BF628FB20D300C43A00 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
+		F73B9BF928FB211400C43A00 /* CoreDataStorage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataStorage.xcdatamodel; sourceTree = "<group>"; };
+		F73B9BFF28FB246000C43A00 /* CoreDataStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorageError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				F73B9B9228F860F600C43A00 /* LocalDatabaseService.swift */,
+				F73B9BF528FB20AA00C43A00 /* CoreDataStorage */,
 			);
 			path = LocalDatabase;
 			sourceTree = "<group>";
@@ -476,6 +483,16 @@
 				F73B9BF128FB1BB500C43A00 /* FileStorageError.swift */,
 			);
 			path = ExtendServices;
+			sourceTree = "<group>";
+		};
+		F73B9BF528FB20AA00C43A00 /* CoreDataStorage */ = {
+			isa = PBXGroup;
+			children = (
+				F73B9BF628FB20D300C43A00 /* CoreDataStorage.swift */,
+				F73B9BFF28FB246000C43A00 /* CoreDataStorageError.swift */,
+				F73B9BF828FB211400C43A00 /* CoreDataStorage.xcdatamodeld */,
+			);
+			path = CoreDataStorage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -617,11 +634,13 @@
 				F73B9BBA28F8838A00C43A00 /* NetworkCancellable.swift in Sources */,
 				F73B9BF428FB1C9B00C43A00 /* AudioError.swift in Sources */,
 				F73B9BE728FAFDEE00C43A00 /* CircularProgressView.swift in Sources */,
+				F73B9BFA28FB211400C43A00 /* CoreDataStorage.xcdatamodeld in Sources */,
 				F73B9BA228F8662400C43A00 /* DependenciesProvider.swift in Sources */,
 				F73B9BAD28F86D3900C43A00 /* AppConstants.swift in Sources */,
 				F73B9BBC28F8849A00C43A00 /* Cancellable.swift in Sources */,
 				F73B9B8228F8580000C43A00 /* SongListCoordinator.swift in Sources */,
 				F73B9B7A28F8576600C43A00 /* SongListViewController.swift in Sources */,
+				F73B9C0028FB246000C43A00 /* CoreDataStorageError.swift in Sources */,
 				F73B9B8728F859DC00C43A00 /* IndicatorLoader.swift in Sources */,
 				F73B9B7F28F857B000C43A00 /* AppCoordinator.swift in Sources */,
 				F73B9BDC28FADC7700C43A00 /* AppError.swift in Sources */,
@@ -650,6 +669,7 @@
 				F73B9BF028FB197700C43A00 /* FileManagerService.swift in Sources */,
 				F73B9BBF28F884C800C43A00 /* RepositoryTask.swift in Sources */,
 				F73B9BCE28F9032500C43A00 /* DownloadError.swift in Sources */,
+				F73B9BF728FB20D300C43A00 /* CoreDataStorage.swift in Sources */,
 				F73B9B9D28F862E200C43A00 /* PlaySongUseCase.swift in Sources */,
 				F73B9B9B28F862C600C43A00 /* GetListSongUseCase.swift in Sources */,
 				F73B9BA728F86C4E00C43A00 /* SongRepository.swift in Sources */,
@@ -993,6 +1013,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F73B9BF828FB211400C43A00 /* CoreDataStorage.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F73B9BF928FB211400C43A00 /* CoreDataStorage.xcdatamodel */,
+			);
+			currentVersion = F73B9BF928FB211400C43A00 /* CoreDataStorage.xcdatamodel */;
+			path = CoreDataStorage.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F73B9B2128F81B8000C43A00 /* Project object */;
 }

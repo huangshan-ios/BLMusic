@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GetListSongUseCase {
-    var  songRepository: SongRepository { get }
+    var songRepository: SongRepository { get }
     
     func getListSong(completion: @escaping (Result<[Song], Error>) -> Void) -> Cancellable?
 }

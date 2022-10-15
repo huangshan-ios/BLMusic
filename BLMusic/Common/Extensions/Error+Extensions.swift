@@ -41,6 +41,26 @@ extension Error {
             }
         }
         
+        if let audioError = self as? AudioError {
+            switch audioError {
+            case .invalidURL, .somethingWentWrong:
+                return CommonUIError.somethingWhenWrong
+            case .other(let error):
+                return CommonUIError(id: (error as NSError).code,
+                                     message: error.localizedDescription)
+            }
+        }
+        
+        if let coreDataError = self as? CoreDataStorageError {
+            switch coreDataError {
+            case .other(let error):
+                return CommonUIError(id: (error as NSError).code,
+                                     message: error.localizedDescription)
+            default:
+                return CommonUIError.somethingWhenWrong
+            }
+        }
+        
         return CommonUIError.somethingWhenWrong
     }
 }

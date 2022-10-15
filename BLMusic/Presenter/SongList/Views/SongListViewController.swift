@@ -11,18 +11,6 @@ class SongListViewController: ViewControllerType<SongListViewModel, SongListCoor
     
     @IBOutlet weak var listSongTableView: UITableView!
     
-    private lazy var tableHeaderView: UIView = {
-        let view = UIView()
-        view.frame = .zero
-        return view
-    }()
-    
-    private lazy var tableFooterView: UIView = {
-        let view = UIView()
-        view.frame = .zero
-        return view
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.loadNewSongs()
@@ -33,10 +21,7 @@ class SongListViewController: ViewControllerType<SongListViewModel, SongListCoor
         
         let cellNib = UINib(nibName: SongTableViewCell.className, bundle: nil)
         listSongTableView.register(cellNib, forCellReuseIdentifier: SongTableViewCell.className)
-        
-        listSongTableView.tableHeaderView = tableHeaderView
-        listSongTableView.tableFooterView = tableFooterView
-        
+                
         listSongTableView.delegate = self
         listSongTableView.dataSource = self
     }
@@ -46,6 +31,7 @@ class SongListViewController: ViewControllerType<SongListViewModel, SongListCoor
             guard let self = self else {
                 return
             }
+            
             self.handleError(error: error)
         }
         
@@ -53,6 +39,7 @@ class SongListViewController: ViewControllerType<SongListViewModel, SongListCoor
             guard let self = self else {
                 return
             }
+            
             self.showIndicator(isLoading)
         }
         
@@ -60,6 +47,7 @@ class SongListViewController: ViewControllerType<SongListViewModel, SongListCoor
             guard let self = self else {
                 return
             }
+            
             DispatchQueue.main.async {
                 self.listSongTableView.reloadData()
             }
@@ -69,16 +57,14 @@ class SongListViewController: ViewControllerType<SongListViewModel, SongListCoor
             guard let self = self else {
                 return
             }
+            
             DispatchQueue.main.async {
                 if self.listSongTableView.indexPathsForVisibleRows?.contains(IndexPath(row: index, section: 0)) ?? false {
                     self.listSongTableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
                 }
             }
         }
-        
-        
     }
-
 }
 
 extension SongListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -95,6 +81,7 @@ extension SongListViewController: UITableViewDelegate, UITableViewDataSource {
             guard let self = self else {
                 return
             }
+            
             switch state {
             case .onCloud:
                 self.viewModel.downloadSong(at: indexPath.row)
@@ -106,14 +93,6 @@ extension SongListViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
         return songTableViewCell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return .leastNonzeroMagnitude
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return .leastNonzeroMagnitude
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

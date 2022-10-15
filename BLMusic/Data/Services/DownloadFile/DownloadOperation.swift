@@ -42,16 +42,19 @@ class DownloadOperation: Operation, NetworkCancellable {
     ) {
         super.init()
         
-        task = session.downloadTask(with: downloadTaskURL, completionHandler: { [weak self] (localURL, response, error) in
-            guard let self = self else {
-                downloadHandler?(nil, nil, DownloadError.somethingWentWrong)
-                return
+        task = session.downloadTask(
+            with: downloadTaskURL,
+            completionHandler: { [weak self] (localURL, response, error) in
+                guard let self = self else {
+                    downloadHandler?(nil, nil, DownloadError.somethingWentWrong)
+                    return
+                }
+                
+                downloadHandler?(localURL, response, error)
+                
+                self.state = .finished
             }
-  
-            downloadHandler?(localURL, response, error)
-            
-            self.state = .finished
-        })
+        )
         
         progressObservation = task.progress.observe(\.fractionCompleted) { progress, _ in
             progressHandler(progress.fractionCompleted)
@@ -65,7 +68,7 @@ class DownloadOperation: Operation, NetworkCancellable {
         }
         
         state = .executing
-                
+        
         task.resume()
     }
     
