@@ -51,5 +51,15 @@ class ViewControllerType<ViewModel: ViewModelType, Coordinator: CoordinatorType>
 
 extension ViewControllerType {
     private func showError(error: Error) {
+        let commonError = error.asCommonUIError()
+        let alertController = UIAlertController(title: "Oops there was an error!",
+                                                message: commonError.message,
+                                                preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            alertController.dismiss(animated: false)
+        }))
+        
+        present(alertController, animated: false)
     }
 }

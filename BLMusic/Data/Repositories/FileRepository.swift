@@ -11,7 +11,7 @@ protocol FileRepository {
     var fileStorageSerivce: FileStorageService { get }
     
     func saveCache(
-        of file: String,
+        of fileName: String,
         from tmpURL: URL,
         completion: @escaping (Result<URL, Error>) -> Void
     )
@@ -25,7 +25,7 @@ final class FileRepositoryImpl: FileRepository {
     }
     
     func saveCache(
-        of file: String,
+        of fileName: String,
         from tmpURL: URL,
         completion: @escaping (Result<URL, Error>) -> Void
     ) {
@@ -35,7 +35,7 @@ final class FileRepositoryImpl: FileRepository {
             }
             switch result {
             case .success:
-                let cacheURL = AppConstants.Document.cacheDirectoryURL.appendingPathComponent(file)
+                let cacheURL = AppConstants.Document.cacheDirectoryURL.appendingPathComponent(fileName)
                 self.fileStorageSerivce.moveFile(from: tmpURL, to: cacheURL, removedIfDupplicate: true, completion: completion)
             case .failure(let error):
                 completion(.failure(error))

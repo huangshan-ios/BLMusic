@@ -70,7 +70,9 @@ class SongListViewController: ViewControllerType<SongListViewModel, SongListCoor
                 return
             }
             DispatchQueue.main.async {
-                self.listSongTableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+                if self.listSongTableView.indexPathsForVisibleRows?.contains(IndexPath(row: index, section: 0)) ?? false {
+                    self.listSongTableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+                }
             }
         }
         
@@ -89,11 +91,15 @@ extension SongListViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         songTableViewCell.setupSongView(viewModel.getSongs()[indexPath.row])
-        songTableViewCell.onTapActionButton = { [weak self] in
+        songTableViewCell.onTapActionButton = { [weak self] state in
             guard let self = self else {
                 return
             }
-            self.viewModel.downloadSong(at: indexPath.row)
+            switch state {
+            case .notDownloaded:
+                self.viewModel.downloadSong(at: indexPath.row)
+            default: break
+            }
         }
         return songTableViewCell
     }

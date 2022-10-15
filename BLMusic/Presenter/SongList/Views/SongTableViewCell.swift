@@ -10,9 +10,10 @@ import UIKit
 class SongTableViewCell: UITableViewCell {
 
     @IBOutlet weak var songNameLabel: UILabel!
-    @IBOutlet weak var songStateImageView: UIImageView!
+    @IBOutlet weak var actionButton: DownloadButton!
     
-    var onTapActionButton: (() -> Void)?
+    var onTapActionButton: ((Song.State) -> Void)?
+    var songData: Song?
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -20,20 +21,34 @@ class SongTableViewCell: UITableViewCell {
     }
     
     func setupSongView(_ song: Song) {
-        songNameLabel.text = song.name
-        
-        var image: UIImage?
-        switch song.state {
-        case .notDownloaded:
-            image = UIImage(named: "ic_not_downloaded")
-        default:
-            break
+        self.songData = song
+        guard let songData = songData else {
+            return
         }
-        songStateImageView.image = image
+        
+        songNameLabel.text = songData.name
+        
+        switch songData.state {
+        case .notDownloaded:
+            actionButton.status = .notDownloaded
+        case .downloading(let progress):
+            if actionButton.progress == 0 {
+                actionButton.drawCircle()
+            }
+            actionButton.status = .downloading
+            actionButton.progress = Float(progress)
+        case .downloaded, .notPlaying:
+            actionButton.status = .paused
+        case .playing:
+            actionButton.status = .playing
+        }
     }
     
     @IBAction func onTapActionButton(_ sender: Any) {
-        onTapActionButton?()
+        guard let songData = songData else {
+            return
+        }
+        onTapActionButton?(songData.state)
     }
     
 }
