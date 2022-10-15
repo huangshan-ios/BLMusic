@@ -10,7 +10,10 @@ import Foundation
 protocol GetListSongUseCase {
     var songRepository: SongRepository { get }
     
-    func getListSong(completion: @escaping (Result<[Song], Error>) -> Void) -> Cancellable?
+    func getListSong(
+        baseOn cacheSongs: [Song],
+        completion: @escaping (Result<[Song], Error>) -> Void
+    ) -> Cancellable?
 }
 
 final class GetListSongUseCaseImpl: GetListSongUseCase {
@@ -20,12 +23,22 @@ final class GetListSongUseCaseImpl: GetListSongUseCase {
         self.songRepository = songRepository
     }
     
-    func getListSong(completion: @escaping (Result<[Song], Error>) -> Void) -> Cancellable? {
+    func getListSong(
+        baseOn cacheSongs: [Song],
+        completion: @escaping (Result<[Song], Error>) -> Void
+    ) -> Cancellable? {
         return songRepository.getListSong { result in
             switch result {
             case .success(let songs):
-                let songs = songs.map({ SongMapper.map($0) })
-                completion(.success(songs))
+                var newSongs = songs.map({ SongMapper.map($0) })
+                for cacheSong in cacheSongs {
+                    if let indexSongDTO = songs.firstIndex(where: { $0.id == cacheSong.id }) {
+                        let newSong = SongMapper.nestedMap(songs[indexSongDTO])(cacheSong)
+                        newSongs.remove(at: indexSongDTO)
+                        newSongs.insert(newSong, at: indexSongDTO)
+                    }
+                }
+                completion(.success(newSongs))
             case .failure(let error):
                 completion(.failure(error))
             }
