@@ -51,10 +51,12 @@
 		F73B9BD128FA915A00C43A00 /* FileStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BD028FA915A00C43A00 /* FileStorageService.swift */; };
 		F73B9BD328FA93B600C43A00 /* FileStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BD228FA93B600C43A00 /* FileStorageError.swift */; };
 		F73B9BD528FA97F600C43A00 /* FileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BD428FA97F600C43A00 /* FileRepository.swift */; };
-		F73B9BD828FAA4CE00C43A00 /* DownloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BD728FAA4CE00C43A00 /* DownloadButton.swift */; };
 		F73B9BDA28FAD7A300C43A00 /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BD928FAD7A300C43A00 /* FileManagerHelper.swift */; };
 		F73B9BDC28FADC7700C43A00 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BDB28FADC7700C43A00 /* AppError.swift */; };
 		F73B9BDE28FADD0100C43A00 /* Error+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BDD28FADD0100C43A00 /* Error+Extensions.swift */; };
+		F73B9BE228FAF38C00C43A00 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BE128FAF38C00C43A00 /* Array+Extensions.swift */; };
+		F73B9BE428FAFA0E00C43A00 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BE328FAFA0E00C43A00 /* UIView+Extensions.swift */; };
+		F73B9BE728FAFDEE00C43A00 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BE628FAFDEE00C43A00 /* CircularProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,10 +127,12 @@
 		F73B9BD028FA915A00C43A00 /* FileStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorageService.swift; sourceTree = "<group>"; };
 		F73B9BD228FA93B600C43A00 /* FileStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorageError.swift; sourceTree = "<group>"; };
 		F73B9BD428FA97F600C43A00 /* FileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRepository.swift; sourceTree = "<group>"; };
-		F73B9BD728FAA4CE00C43A00 /* DownloadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadButton.swift; sourceTree = "<group>"; };
 		F73B9BD928FAD7A300C43A00 /* FileManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerHelper.swift; sourceTree = "<group>"; };
 		F73B9BDB28FADC7700C43A00 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		F73B9BDD28FADD0100C43A00 /* Error+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extensions.swift"; sourceTree = "<group>"; };
+		F73B9BE128FAF38C00C43A00 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		F73B9BE328FAFA0E00C43A00 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		F73B9BE628FAFDEE00C43A00 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,8 +242,8 @@
 			isa = PBXGroup;
 			children = (
 				F73B9B6928F8515E00C43A00 /* Base */,
-				F73B9BD628FAA4BF00C43A00 /* CustomView */,
 				F73B9BC128F8859800C43A00 /* Protocols */,
+				F73B9BE528FAFDE100C43A00 /* CustomView */,
 				F73B9BAB28F86D3000C43A00 /* Constants */,
 				F73B9B6528F81D7800C43A00 /* Helper */,
 				F73B9B8328F8593700C43A00 /* Extensions */,
@@ -314,6 +318,8 @@
 			children = (
 				F73B9B8428F8594200C43A00 /* NSObject+Extensions.swift */,
 				F73B9BDD28FADD0100C43A00 /* Error+Extensions.swift */,
+				F73B9BE128FAF38C00C43A00 /* Array+Extensions.swift */,
+				F73B9BE328FAFA0E00C43A00 /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -464,10 +470,10 @@
 			path = FileStorage;
 			sourceTree = "<group>";
 		};
-		F73B9BD628FAA4BF00C43A00 /* CustomView */ = {
+		F73B9BE528FAFDE100C43A00 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				F73B9BD728FAA4CE00C43A00 /* DownloadButton.swift */,
+				F73B9BE628FAFDEE00C43A00 /* CircularProgressView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -609,6 +615,7 @@
 				F73B9B8528F8594200C43A00 /* NSObject+Extensions.swift in Sources */,
 				F73B9BCC28F902CC00C43A00 /* DownloadCancellable.swift in Sources */,
 				F73B9BBA28F8838A00C43A00 /* NetworkCancellable.swift in Sources */,
+				F73B9BE728FAFDEE00C43A00 /* CircularProgressView.swift in Sources */,
 				F73B9BA228F8662400C43A00 /* DependenciesProvider.swift in Sources */,
 				F73B9BAD28F86D3900C43A00 /* AppConstants.swift in Sources */,
 				F73B9BBC28F8849A00C43A00 /* Cancellable.swift in Sources */,
@@ -626,15 +633,16 @@
 				F73B9B6728F81D8900C43A00 /* AppConfigurationHelper.swift in Sources */,
 				F73B9BB228F86DBE00C43A00 /* SongDTO.swift in Sources */,
 				F73B9B9628F860F600C43A00 /* LocalDatabaseService.swift in Sources */,
+				F73B9BE428FAFA0E00C43A00 /* UIView+Extensions.swift in Sources */,
 				F73B9BB728F870DB00C43A00 /* SongTableViewCell.swift in Sources */,
 				F73B9BDE28FADD0100C43A00 /* Error+Extensions.swift in Sources */,
 				F73B9B7D28F8577600C43A00 /* CoordinatorType.swift in Sources */,
 				F73B9BDA28FAD7A300C43A00 /* FileManagerHelper.swift in Sources */,
-				F73B9BD828FAA4CE00C43A00 /* DownloadButton.swift in Sources */,
 				F73B9B2D28F81B8000C43A00 /* AppDelegate.swift in Sources */,
 				F73B9BB028F86D9F00C43A00 /* SongMapper.swift in Sources */,
 				F73B9B9528F860F600C43A00 /* NetworkError.swift in Sources */,
 				F73B9B9828F8625700C43A00 /* SongListViewModel.swift in Sources */,
+				F73B9BE228FAF38C00C43A00 /* Array+Extensions.swift in Sources */,
 				F73B9BAA28F86D0900C43A00 /* SongsRequest.swift in Sources */,
 				F73B9B9428F860F600C43A00 /* NetworkRequest.swift in Sources */,
 				F73B9B6D28F8518E00C43A00 /* ViewControllerType.swift in Sources */,

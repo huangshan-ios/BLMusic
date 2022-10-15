@@ -12,12 +12,6 @@ protocol FileStorageService {
     
     func createDirectoryIfNeeded(_ directoryURL: URL, completion: @escaping (Result<Void, Error>) -> Void)
     
-    func storeFile(
-        from data: Data,
-        to url: URL,
-        completion: @escaping (Result<URL, Error>) -> Void
-    )
-    
     func moveFile(
         from current: URL,
         to destination: URL,
@@ -51,12 +45,6 @@ final class FileStorageServiceImpl: FileStorageService {
             completion(.failure(FileStorageError.other(error)))
         }
     }
-    
-    // TODO: We will use this function if using URLSession.share.dataTask
-    func storeFile(
-        from data: Data,
-        to url: URL,
-        completion: @escaping (Result<URL, Error>) -> Void) {}
     
     func moveFile(
         from current: URL,

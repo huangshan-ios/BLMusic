@@ -63,27 +63,34 @@ final class SongListViewModel: ViewModelType {
     
     func downloadSong(at index: Int) {
         let song = songs[index]
-        let cancellable = downloadSongUseCase.downloadSong(song) { [weak self] result in
-            guard let self = self else {
-                return
-            }
-            switch result {
-            case .success(let state):
-                print("State \(state)")
-                let song = Song(id: song.id, name: song.name, url: song.url, state: state)
-                self.songs.remove(at: index)
-                self.songs.insert(song, at: index)
-                if state.isDownloaded {
-                    self.downloadSongCancellables[song.url]??.cancel()
+        update(songState: .downloading(0), at: index)
+        
+        let cancellable = downloadSongUseCase.downloadSong(
+            song,
+            progressHander: { [weak self] progress in
+                guard let self = self else {
+                    return
                 }
-                self.songStateObservable?(index)
-            case .failure(let error):
-                print("error \(error)")
-                self.errorObservable?(error)
-            }
-            
-        }
+                self.update(songState: .downloading(progress), at: index)
+            }, completionHandler: { [weak self] result in
+                guard let self = self else {
+                    return
+                }
+                switch result {
+                case .success(let cacheURL):
+                    self.update(songState: .downloaded, and: cacheURL, at: index)
+                    self.downloadSongCancellables[song.url]??.cancel()
+                case .failure(let error):
+                    self.errorObservable?(error)
+                }
+                
+            })
+        
         downloadSongCancellables[song.url] = cancellable
     }
-
+    
+    private func update(songState newState: Song.State, and url: URL? = nil, at index: Int) {
+        songs.update(newState, url: url, at: index)
+        songStateObservable?(index)
+    }
 }

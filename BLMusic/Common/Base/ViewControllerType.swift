@@ -60,6 +60,8 @@ extension ViewControllerType {
             alertController.dismiss(animated: false)
         }))
         
-        present(alertController, animated: false)
+        DispatchQueue.main.async {
+            self.present(alertController, animated: false)
+        }
     }
 }

@@ -10,7 +10,9 @@ import UIKit
 class SongTableViewCell: UITableViewCell {
 
     @IBOutlet weak var songNameLabel: UILabel!
-    @IBOutlet weak var actionButton: DownloadButton!
+    @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var songStateImageView: UIImageView!
+    @IBOutlet weak var downloadProgressView: CircularProgressView!
     
     var onTapActionButton: ((Song.State) -> Void)?
     var songData: Song?
@@ -18,6 +20,9 @@ class SongTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         onTapActionButton = nil
+        downloadProgressView.isHidden = true
+        songStateImageView.isHidden = false
+        songStateImageView.image = nil
     }
     
     func setupSongView(_ song: Song) {
@@ -28,20 +33,25 @@ class SongTableViewCell: UITableViewCell {
         
         songNameLabel.text = songData.name
         
+        // TODO: Enhance this one by custom a button class to switching state and also change the progress
         switch songData.state {
         case .notDownloaded:
-            actionButton.status = .notDownloaded
+            songStateImageView.isHidden = false
+            songStateImageView.image = UIImage(named: "ic_download")
         case .downloading(let progress):
-            if actionButton.progress == 0 {
-                actionButton.drawCircle()
-            }
-            actionButton.status = .downloading
-            actionButton.progress = Float(progress)
+            songStateImageView.isHidden = true
+            songStateImageView.image = nil
+            downloadProgressView.isHidden = false
+            downloadProgressView.progress = progress
         case .downloaded, .notPlaying:
-            actionButton.status = .paused
+            songStateImageView.isHidden = false
+            songStateImageView.image = UIImage(named: "ic_play")
+            downloadProgressView.isHidden = true
         case .playing:
-            actionButton.status = .playing
+            songStateImageView.isHidden = false
+            songStateImageView.image = UIImage(named: "ic_pause")
         }
+
     }
     
     @IBAction func onTapActionButton(_ sender: Any) {

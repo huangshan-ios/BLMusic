@@ -11,20 +11,21 @@ struct Song {
     enum State {
         case notDownloaded
         case downloading(Double)
-        case downloaded(URL)
+        case downloaded
         case playing
         case notPlaying
-        
-        var isDownloaded: Bool {
-            guard case .downloaded = self else {
-                return false
-            }
-            return true
-        }
     }
     
     let id: String
     let name: String
     let url: String
+    
     var state: State = .notDownloaded
+    var cacheURL: URL?
+    
+    mutating func change(_ newState: State = .notDownloaded, url: URL? = nil) {
+        self.state = newState
+        self.cacheURL = url
+    }
+    
 }
