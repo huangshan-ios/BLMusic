@@ -6,10 +6,6 @@
 //
 
 import Foundation
-import AVFoundation
-import AVFAudio
-
-var player: AVAudioPlayer?
 
 final class SongListViewModel: ViewModelType {
     
