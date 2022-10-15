@@ -8,14 +8,20 @@
 import Foundation
 
 class DependenciesProvider {
-    
-    static var networkService: NetworkSevice = NetworkServiceImpl()
 
     class func provideSongListViewModel() -> SongListViewModel {
-        let songRepository = SongRepositoryImpl(networkService: networkService)
+        let networkService = NetworkServiceImpl()
+        let downloadFileService = DownloadFileServiceImpl()
+        let fileStorageService = FileStorageServiceImpl()
+        
+        let songRepository = SongRepositoryImpl(networkService: networkService, downloadFileService: downloadFileService)
+        let fileRepository = FileRepositoryImpl(fileStorageSerivce: fileStorageService)
+        
         let getListSongUseCase = GetListSongUseCaseImpl(songRepository: songRepository)
+        let downLoadSongUseCase = DownloadSongUseCaseImpl(songRepository: songRepository,fileRepository: fileRepository)
+        
         return SongListViewModel(getListSongUseCase: getListSongUseCase,
-                                 downloadSongUseCase: DownloadSongUseCaseImpl(),
+                                 downloadSongUseCase: downLoadSongUseCase,
                                  playSongUseCase: PlaySongUseCaseImpl())
     }
     

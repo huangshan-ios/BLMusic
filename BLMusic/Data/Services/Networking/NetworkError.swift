@@ -11,6 +11,7 @@ enum NetworkError: Error {
     case somethingWentWrong
     case invalidRequest(Error)
     case invalidResponse(Error)
+    case invalidURL
     case invalidJSON
     case other(Error)
 }

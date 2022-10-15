@@ -10,10 +10,17 @@ import Foundation
 struct Song {
     enum State {
         case notDownloaded
-        case downloading(Int)
-        case downloaded
+        case downloading(Double)
+        case downloaded(URL)
         case playing
         case notPlaying
+        
+        var isDownloaded: Bool {
+            guard case .downloaded = self else {
+                return false
+            }
+            return true
+        }
     }
     
     let id: String

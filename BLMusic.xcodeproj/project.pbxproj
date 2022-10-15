@@ -44,6 +44,13 @@
 		F73B9BBA28F8838A00C43A00 /* NetworkCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BB928F8838A00C43A00 /* NetworkCancellable.swift */; };
 		F73B9BBC28F8849A00C43A00 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BBB28F8849A00C43A00 /* Cancellable.swift */; };
 		F73B9BBF28F884C800C43A00 /* RepositoryTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BBE28F884C800C43A00 /* RepositoryTask.swift */; };
+		F73B9BC728F88C5200C43A00 /* DownloadFileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BC628F88C5200C43A00 /* DownloadFileService.swift */; };
+		F73B9BC928F88CFE00C43A00 /* DownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BC828F88CFE00C43A00 /* DownloadOperation.swift */; };
+		F73B9BCC28F902CC00C43A00 /* DownloadCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BCB28F902CC00C43A00 /* DownloadCancellable.swift */; };
+		F73B9BCE28F9032500C43A00 /* DownloadError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BCD28F9032500C43A00 /* DownloadError.swift */; };
+		F73B9BD128FA915A00C43A00 /* FileStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BD028FA915A00C43A00 /* FileStorageService.swift */; };
+		F73B9BD328FA93B600C43A00 /* FileStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BD228FA93B600C43A00 /* FileStorageError.swift */; };
+		F73B9BD528FA97F600C43A00 /* FileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BD428FA97F600C43A00 /* FileRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +114,13 @@
 		F73B9BB928F8838A00C43A00 /* NetworkCancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCancellable.swift; sourceTree = "<group>"; };
 		F73B9BBB28F8849A00C43A00 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
 		F73B9BBE28F884C800C43A00 /* RepositoryTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTask.swift; sourceTree = "<group>"; };
+		F73B9BC628F88C5200C43A00 /* DownloadFileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadFileService.swift; sourceTree = "<group>"; };
+		F73B9BC828F88CFE00C43A00 /* DownloadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadOperation.swift; sourceTree = "<group>"; };
+		F73B9BCB28F902CC00C43A00 /* DownloadCancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadCancellable.swift; sourceTree = "<group>"; };
+		F73B9BCD28F9032500C43A00 /* DownloadError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadError.swift; sourceTree = "<group>"; };
+		F73B9BD028FA915A00C43A00 /* FileStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorageService.swift; sourceTree = "<group>"; };
+		F73B9BD228FA93B600C43A00 /* FileStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorageError.swift; sourceTree = "<group>"; };
+		F73B9BD428FA97F600C43A00 /* FileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +319,8 @@
 		F73B9B8C28F860F600C43A00 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F73B9BCF28FA905400C43A00 /* FileStorage */,
+				F73B9BC528F88C1D00C43A00 /* DownloadFile */,
 				F73B9B8D28F860F600C43A00 /* Networking */,
 				F73B9B9128F860F600C43A00 /* LocalDatabase */,
 			);
@@ -314,7 +330,7 @@
 		F73B9B8D28F860F600C43A00 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				F73B9BC228F886AF00C43A00 /* Common */,
+				F73B9BC228F886AF00C43A00 /* Util */,
 				F73B9B8E28F860F600C43A00 /* NetworkService.swift */,
 				F73B9B8F28F860F600C43A00 /* NetworkRequest.swift */,
 				F73B9B9028F860F600C43A00 /* NetworkError.swift */,
@@ -351,8 +367,9 @@
 		F73B9BA528F86C3D00C43A00 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				F73B9BC028F8858900C43A00 /* Common */,
+				F73B9BC028F8858900C43A00 /* Util */,
 				F73B9BA628F86C4E00C43A00 /* SongRepository.swift */,
+				F73B9BD428FA97F600C43A00 /* FileRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -383,12 +400,12 @@
 			path = Mappers;
 			sourceTree = "<group>";
 		};
-		F73B9BC028F8858900C43A00 /* Common */ = {
+		F73B9BC028F8858900C43A00 /* Util */ = {
 			isa = PBXGroup;
 			children = (
 				F73B9BBE28F884C800C43A00 /* RepositoryTask.swift */,
 			);
-			path = Common;
+			path = Util;
 			sourceTree = "<group>";
 		};
 		F73B9BC128F8859800C43A00 /* Protocols */ = {
@@ -399,12 +416,40 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		F73B9BC228F886AF00C43A00 /* Common */ = {
+		F73B9BC228F886AF00C43A00 /* Util */ = {
 			isa = PBXGroup;
 			children = (
 				F73B9BB928F8838A00C43A00 /* NetworkCancellable.swift */,
 			);
-			path = Common;
+			path = Util;
+			sourceTree = "<group>";
+		};
+		F73B9BC528F88C1D00C43A00 /* DownloadFile */ = {
+			isa = PBXGroup;
+			children = (
+				F73B9BCA28F902C200C43A00 /* Util */,
+				F73B9BC628F88C5200C43A00 /* DownloadFileService.swift */,
+				F73B9BC828F88CFE00C43A00 /* DownloadOperation.swift */,
+				F73B9BCD28F9032500C43A00 /* DownloadError.swift */,
+			);
+			path = DownloadFile;
+			sourceTree = "<group>";
+		};
+		F73B9BCA28F902C200C43A00 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				F73B9BCB28F902CC00C43A00 /* DownloadCancellable.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		F73B9BCF28FA905400C43A00 /* FileStorage */ = {
+			isa = PBXGroup;
+			children = (
+				F73B9BD028FA915A00C43A00 /* FileStorageService.swift */,
+				F73B9BD228FA93B600C43A00 /* FileStorageError.swift */,
+			);
+			path = FileStorage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -542,6 +587,7 @@
 				F73B9BA028F8642100C43A00 /* Song.swift in Sources */,
 				F73B9B9328F860F600C43A00 /* NetworkService.swift in Sources */,
 				F73B9B8528F8594200C43A00 /* NSObject+Extensions.swift in Sources */,
+				F73B9BCC28F902CC00C43A00 /* DownloadCancellable.swift in Sources */,
 				F73B9BBA28F8838A00C43A00 /* NetworkCancellable.swift in Sources */,
 				F73B9BA228F8662400C43A00 /* DependenciesProvider.swift in Sources */,
 				F73B9BAD28F86D3900C43A00 /* AppConstants.swift in Sources */,
@@ -550,9 +596,12 @@
 				F73B9B7A28F8576600C43A00 /* SongListViewController.swift in Sources */,
 				F73B9B8728F859DC00C43A00 /* IndicatorLoader.swift in Sources */,
 				F73B9B7F28F857B000C43A00 /* AppCoordinator.swift in Sources */,
+				F73B9BD528FA97F600C43A00 /* FileRepository.swift in Sources */,
 				F73B9BA428F868F100C43A00 /* DownloadSongUseCase.swift in Sources */,
 				F73B9B6B28F8516D00C43A00 /* ViewModelType.swift in Sources */,
+				F73B9BC728F88C5200C43A00 /* DownloadFileService.swift in Sources */,
 				F73B9BB428F86FA700C43A00 /* DataDTO.swift in Sources */,
+				F73B9BD328FA93B600C43A00 /* FileStorageError.swift in Sources */,
 				F73B9B6728F81D8900C43A00 /* AppConfigurationHelper.swift in Sources */,
 				F73B9BB228F86DBE00C43A00 /* SongDTO.swift in Sources */,
 				F73B9B9628F860F600C43A00 /* LocalDatabaseService.swift in Sources */,
@@ -565,7 +614,10 @@
 				F73B9BAA28F86D0900C43A00 /* SongsRequest.swift in Sources */,
 				F73B9B9428F860F600C43A00 /* NetworkRequest.swift in Sources */,
 				F73B9B6D28F8518E00C43A00 /* ViewControllerType.swift in Sources */,
+				F73B9BD128FA915A00C43A00 /* FileStorageService.swift in Sources */,
+				F73B9BC928F88CFE00C43A00 /* DownloadOperation.swift in Sources */,
 				F73B9BBF28F884C800C43A00 /* RepositoryTask.swift in Sources */,
+				F73B9BCE28F9032500C43A00 /* DownloadError.swift in Sources */,
 				F73B9B9D28F862E200C43A00 /* PlaySongUseCase.swift in Sources */,
 				F73B9B9B28F862C600C43A00 /* GetListSongUseCase.swift in Sources */,
 				F73B9BA728F86C4E00C43A00 /* SongRepository.swift in Sources */,

@@ -89,6 +89,12 @@ extension SongListViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         songTableViewCell.setupSongView(viewModel.getSongs()[indexPath.row])
+        songTableViewCell.onTapActionButton = { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.viewModel.downloadSong(at: indexPath.row)
+        }
         return songTableViewCell
     }
     

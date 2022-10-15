@@ -19,6 +19,8 @@ final class SongListViewModel: ViewModelType {
         }
     }
     
+    private var downloadSongCancellables: [String: Cancellable?] = [:]
+    
     private var songs: [Song] = []
     
     var loadSongsObservable: (() -> Void)?
@@ -59,17 +61,25 @@ final class SongListViewModel: ViewModelType {
         return songs
     }
     
-    func downloadSong(at index: IndexPath) {
-        let song = songs[index.row]
-        downloadSongUseCase.downloadSong(with: song.url) { [weak self] state in
+    func downloadSong(at index: Int) {
+        let song = songs[index]
+        let cancellable = downloadSongUseCase.downloadSong(song) { [weak self] result in
             guard let self = self else {
                 return
             }
-            let song = Song(id: song.id, name: song.name, url: song.url, state: state)
-            self.songs.remove(at: index.row)
-            self.songs.insert(song, at: index.row)
-            self.songStateObservable?(index.row)
+            switch result {
+            case .success(let state):
+                print("State \(state)")
+                if state.isDownloaded {
+                    self.downloadSongCancellables[song.url]??.cancel()
+                }
+            case .failure(let error):
+                print("error \(error)")
+                self.errorObservable?(error)
+            }
+            
         }
+        downloadSongCancellables[song.url] = cancellable
     }
 
 }

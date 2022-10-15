@@ -32,14 +32,26 @@
                                     <constraint firstAttribute="height" constant="22" id="ZFi-sC-eJH"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZ6-ll-uHT">
+                                <rect key="frame" x="424" y="181" width="22" height="22"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="onTapActionButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Vci-HT-cNW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="YZ6-ll-uHT" firstAttribute="bottom" secondItem="HbH-rK-28r" secondAttribute="bottom" id="4jh-ga-IO7"/>
+                            <constraint firstItem="YZ6-ll-uHT" firstAttribute="top" secondItem="HbH-rK-28r" secondAttribute="top" id="CV2-FI-0ki"/>
                             <constraint firstAttribute="trailing" secondItem="gci-Fs-qwl" secondAttribute="trailing" constant="12" id="CpO-7n-aws"/>
                             <constraint firstItem="gci-Fs-qwl" firstAttribute="top" secondItem="G9Z-Gm-f68" secondAttribute="top" constant="12" id="Fuq-3g-ETL"/>
                             <constraint firstAttribute="bottom" secondItem="HbH-rK-28r" secondAttribute="bottom" constant="18" id="OWD-Rz-QnQ"/>
                             <constraint firstAttribute="trailing" secondItem="HbH-rK-28r" secondAttribute="trailing" constant="18" id="OqO-Ip-FEI"/>
+                            <constraint firstItem="YZ6-ll-uHT" firstAttribute="trailing" secondItem="HbH-rK-28r" secondAttribute="trailing" id="QfD-Ms-si7"/>
                             <constraint firstItem="gci-Fs-qwl" firstAttribute="leading" secondItem="G9Z-Gm-f68" secondAttribute="leading" constant="12" id="cWP-KU-JVf"/>
+                            <constraint firstItem="YZ6-ll-uHT" firstAttribute="leading" secondItem="HbH-rK-28r" secondAttribute="leading" id="kQX-ca-uqk"/>
                         </constraints>
                     </view>
                 </subviews>
