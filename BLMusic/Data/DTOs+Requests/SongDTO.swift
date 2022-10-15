@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct SongDTO: Codable {
+struct SongDTO: Decodable {
     let id, name, url: String
-    
+        
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case name = "name"

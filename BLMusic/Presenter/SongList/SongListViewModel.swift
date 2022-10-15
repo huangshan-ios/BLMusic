@@ -51,6 +51,7 @@ final class SongListViewModel: ViewModelType {
             guard let self = self else {
                 return
             }
+            
             switch result {
             case.success(let songs):
                 self.songs = songs
@@ -73,11 +74,14 @@ final class SongListViewModel: ViewModelType {
                 guard let self = self else {
                     return
                 }
+                // Cause the song is download too fast then you can use this print to check if the song is not simultaneously downloaded
+                // print("Progress of \(song.name) is: \(progress)")
                 self.update(songState: .downloading(progress), at: index)
             }, completionHandler: { [weak self] result in
                 guard let self = self else {
                     return
                 }
+                
                 switch result {
                 case .success(let cacheURL):
                     self.update(songState: .ready, and: cacheURL, at: index)
@@ -85,8 +89,8 @@ final class SongListViewModel: ViewModelType {
                 case .failure(let error):
                     self.errorObservable?(error)
                 }
-                
-            })
+            }
+        )
         
         downloadSongCancellables[song.url] = cancellable
     }

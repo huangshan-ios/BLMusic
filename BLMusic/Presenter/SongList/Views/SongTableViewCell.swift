@@ -64,6 +64,7 @@ class SongTableViewCell: UITableViewCell {
         guard let songData = songData else {
             return
         }
+        
         onTapActionButton?(songData.state)
     }
     

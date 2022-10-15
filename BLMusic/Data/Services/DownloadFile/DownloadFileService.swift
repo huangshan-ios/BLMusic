@@ -34,17 +34,20 @@ final class DownloadFileServiceImpl: DownloadFileService {
             return nil
         }
         
-        let downloadOperation = DownloadOperation(downloadTaskURL: url, progressHandler: { progress in
-            progressHandler(progress)
-        }, downloadHandler: { temporaryURL, _, error in
-            if let error = error {
-                completionHandler(.failure(error))
-            } else if let temporaryURL = temporaryURL {
-                completionHandler(.success(temporaryURL))
-            } else {
-                completionHandler(.failure(DownloadError.somethingWentWrong))
+        let downloadOperation = DownloadOperation(
+            downloadTaskURL: url,
+            progressHandler: { progress in
+                progressHandler(progress)
+            }, downloadHandler: { temporaryURL, _, error in
+                if let error = error {
+                    completionHandler(.failure(error))
+                } else if let temporaryURL = temporaryURL {
+                    completionHandler(.success(temporaryURL))
+                } else {
+                    completionHandler(.failure(DownloadError.somethingWentWrong))
+                }
             }
-        })
+        )
         
         operationQueue.addOperation(downloadOperation)
         
