@@ -29,6 +29,10 @@ final class DownloadSongUseCaseImpl: DownloadSongUseCase {
         progressHander: @escaping (Double) -> Void,
         completionHandler: @escaping (Result<URL, Error>) -> Void
     ) -> Cancellable? {
-        return songRepository.downloadSong(song, progressHandler: progressHander, completionHandler: completionHandler)
+        return songRepository.downloadSong(
+            SongMapper.map(song),
+            progressHandler: progressHander,
+            completionHandler: completionHandler
+        )
     }
 }

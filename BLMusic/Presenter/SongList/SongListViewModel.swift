@@ -13,6 +13,7 @@ var player: AVAudioPlayer?
 
 final class SongListViewModel: ViewModelType {
     
+    private let getListCacheSongUseCase: GetListCacheSongUseCase
     private let getListSongUseCase: GetListSongUseCase
     private let downloadSongUseCase: DownloadSongUseCase
     private let playSongUseCase: PlaySongUseCase
@@ -29,6 +30,7 @@ final class SongListViewModel: ViewModelType {
     
     private var currentPlayIndex: Int? = nil
     
+    // TODO: Enhance below closures by using Observer pattern
     var loadSongsObservable: (() -> Void)?
     var songStateObservable: ((Int) -> Void)?
     
@@ -36,32 +38,54 @@ final class SongListViewModel: ViewModelType {
     var errorObservable: ((Error) -> Void)?
     
     init(
+        getListCacheSongUseCase: GetListCacheSongUseCase,
         getListSongUseCase: GetListSongUseCase,
         downloadSongUseCase: DownloadSongUseCase,
         playSongUseCase: PlaySongUseCase
     ) {
+        self.getListCacheSongUseCase = getListCacheSongUseCase
         self.getListSongUseCase = getListSongUseCase
         self.downloadSongUseCase = downloadSongUseCase
         self.playSongUseCase = playSongUseCase
     }
     
-    func loadNewSongs() {
+    func loadCacheSongs() {
         loadingObservable?(true)
-        getListSongCancellable = getListSongUseCase.getListSong { [weak self] result in
+        getListCacheSongUseCase.getListCacheSong { [weak self] result in
             guard let self = self else {
                 return
             }
             
             switch result {
-            case.success(let songs):
+            case .success(let songs):
                 self.songs = songs
                 self.loadSongsObservable?()
+                self.loadNewSongs(baseOn: songs)
             case .failure(let error):
                 self.errorObservable?(error)
             }
-            self.loadingObservable?(false)
-            self.getListSongCancellable = nil
         }
+    }
+    
+    func loadNewSongs(baseOn cacheSongs: [Song]) {
+        getListSongCancellable = getListSongUseCase.getListSong(
+            baseOn: cacheSongs,
+            completion: { [weak self] result in
+                guard let self = self else {
+                    return
+                }
+                
+                switch result {
+                case.success(let songs):
+                    self.songs = songs
+                    self.loadSongsObservable?()
+                case .failure(let error):
+                    self.errorObservable?(error)
+                }
+                self.loadingObservable?(false)
+                self.getListSongCancellable = nil
+            }
+        )
     }
     
     func downloadSong(at index: Int) {
@@ -98,9 +122,9 @@ final class SongListViewModel: ViewModelType {
     /*
      This is a function for cancel download file
      func cancelDownloadSong(at index: Int) {
-         let song = songs[index]
-         downloadSongCancellables[song.url]??.cancel()
-         update(songState: .onCloud, and: nil, at: index)
+     let song = songs[index]
+     downloadSongCancellables[song.url]??.cancel()
+     update(songState: .onCloud, and: nil, at: index)
      }
      */
     
