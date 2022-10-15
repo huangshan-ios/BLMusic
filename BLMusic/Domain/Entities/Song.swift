@@ -9,7 +9,7 @@ import Foundation
 
 struct Song {
     enum State {
-        case inCloud
+        case onCloud
         case downloading(Double)
         case ready
         case playing
@@ -19,10 +19,10 @@ struct Song {
     let name: String
     let url: String
     
-    var state: State = .inCloud
+    var state: State = .onCloud
     var cacheURL: URL?
     
-    mutating func change(_ newState: State = .inCloud, url: URL? = nil) {
+    mutating func change(_ newState: State = .onCloud, url: URL? = nil) {
         self.state = newState
         self.cacheURL = url
     }
