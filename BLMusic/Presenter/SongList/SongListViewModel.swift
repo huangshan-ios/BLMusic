@@ -124,6 +124,8 @@ final class SongListViewModel: ViewModelType {
      }
      */
     
+    /// This function will throw error everytime you play a song in simulator if you rebuild the app with Xcode, even you already download the file
+    /// The reason is becaus the NSHomeDirectory() of simulator is always changes after each build with Xcode
     func playSong(at index: Int) {
         playSongUseCase.play(song: songs[index]) { [weak self] result in
             guard let self = self else {
