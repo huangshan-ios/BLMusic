@@ -25,15 +25,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HbH-rK-28r">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZ6-ll-uHT" customClass="DownloadButton" customModule="BLMusic" customModuleProvider="target">
                                 <rect key="frame" x="424" y="181" width="22" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="HbH-rK-28r" secondAttribute="height" multiplier="1:1" id="1WM-ZZ-xKa"/>
-                                    <constraint firstAttribute="height" constant="22" id="ZFi-sC-eJH"/>
+                                    <constraint firstAttribute="width" secondItem="YZ6-ll-uHT" secondAttribute="height" multiplier="1:1" id="8nv-8e-pO9"/>
+                                    <constraint firstAttribute="width" constant="22" id="Nlw-xw-wM5"/>
                                 </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZ6-ll-uHT">
-                                <rect key="frame" x="424" y="181" width="22" height="22"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
                                 <connections>
@@ -43,15 +40,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="YZ6-ll-uHT" firstAttribute="bottom" secondItem="HbH-rK-28r" secondAttribute="bottom" id="4jh-ga-IO7"/>
-                            <constraint firstItem="YZ6-ll-uHT" firstAttribute="top" secondItem="HbH-rK-28r" secondAttribute="top" id="CV2-FI-0ki"/>
+                            <constraint firstAttribute="trailing" secondItem="YZ6-ll-uHT" secondAttribute="trailing" constant="18" id="3by-eX-nUz"/>
+                            <constraint firstAttribute="bottom" secondItem="YZ6-ll-uHT" secondAttribute="bottom" constant="18" id="4HP-AV-ZxM"/>
                             <constraint firstAttribute="trailing" secondItem="gci-Fs-qwl" secondAttribute="trailing" constant="12" id="CpO-7n-aws"/>
                             <constraint firstItem="gci-Fs-qwl" firstAttribute="top" secondItem="G9Z-Gm-f68" secondAttribute="top" constant="12" id="Fuq-3g-ETL"/>
-                            <constraint firstAttribute="bottom" secondItem="HbH-rK-28r" secondAttribute="bottom" constant="18" id="OWD-Rz-QnQ"/>
-                            <constraint firstAttribute="trailing" secondItem="HbH-rK-28r" secondAttribute="trailing" constant="18" id="OqO-Ip-FEI"/>
-                            <constraint firstItem="YZ6-ll-uHT" firstAttribute="trailing" secondItem="HbH-rK-28r" secondAttribute="trailing" id="QfD-Ms-si7"/>
                             <constraint firstItem="gci-Fs-qwl" firstAttribute="leading" secondItem="G9Z-Gm-f68" secondAttribute="leading" constant="12" id="cWP-KU-JVf"/>
-                            <constraint firstItem="YZ6-ll-uHT" firstAttribute="leading" secondItem="HbH-rK-28r" secondAttribute="leading" id="kQX-ca-uqk"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -64,8 +57,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="actionButton" destination="YZ6-ll-uHT" id="SBP-jH-HGu"/>
                 <outlet property="songNameLabel" destination="gci-Fs-qwl" id="eD8-fZ-696"/>
-                <outlet property="songStateImageView" destination="HbH-rK-28r" id="LdE-Xg-JL3"/>
             </connections>
             <point key="canvasLocation" x="252.17391304347828" y="145.3125"/>
         </tableViewCell>

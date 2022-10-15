@@ -70,9 +70,13 @@ final class SongListViewModel: ViewModelType {
             switch result {
             case .success(let state):
                 print("State \(state)")
+                let song = Song(id: song.id, name: song.name, url: song.url, state: state)
+                self.songs.remove(at: index)
+                self.songs.insert(song, at: index)
                 if state.isDownloaded {
                     self.downloadSongCancellables[song.url]??.cancel()
                 }
+                self.songStateObservable?(index)
             case .failure(let error):
                 print("error \(error)")
                 self.errorObservable?(error)

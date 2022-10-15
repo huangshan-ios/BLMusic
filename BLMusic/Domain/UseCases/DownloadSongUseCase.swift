@@ -42,7 +42,7 @@ final class DownloadSongUseCaseImpl: DownloadSongUseCase {
             }
             switch result {
             case.success(let tmpURL):
-                self.saveCache(of: song.name.replacingOccurrences(of: " ", with: ""),
+                self.saveCache(of: song.name.replacingOccurrences(of: " ", with: "").appending(".mp3"),
                                tmpURL: tmpURL, completion: completionHandler)
             case .failure(let error):
                 completionHandler(.failure(error))
