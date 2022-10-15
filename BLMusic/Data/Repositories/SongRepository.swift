@@ -34,7 +34,7 @@ final class SongRepositoryImpl: SongRepository {
     func getListSong(completion: @escaping (Result<[SongDTO], Error>) -> Void) -> Cancellable? {
         let request = SongsRequest()
         let task = RepositoryTask()
-        task.networkTask = networkService.request(request, completion: { (result: Result<DataDTO<[SongDTO]>, Error>) in
+        task.serviceTask = networkService.request(request, completion: { (result: Result<DataDTO<[SongDTO]>, Error>) in
             switch result {
             case .success(let response):
                 completion(.success(response.data))
@@ -51,9 +51,9 @@ final class SongRepositoryImpl: SongRepository {
         completionHandler: @escaping (Result<URL, Error>) -> Void
     ) -> Cancellable? {
         let task = RepositoryTask()
-        task.downloadTask = downloadFileService.downloadFile(from: url,
-                                                             progressHandler: progressHandler,
-                                                             completionHandler: completionHandler)
+        task.serviceTask = downloadFileService.downloadFile(from: url,
+                                                            progressHandler: progressHandler,
+                                                            completionHandler: completionHandler)
         return task
     }
 }

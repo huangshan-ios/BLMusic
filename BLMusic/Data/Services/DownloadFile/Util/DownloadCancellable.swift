@@ -7,8 +7,7 @@
 
 import Foundation
 
-protocol DownloadCancellable {
-    func cancel()
+protocol DownloadCancellable: Cancellable {
 }
 
 extension Operation: DownloadCancellable { }

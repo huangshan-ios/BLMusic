@@ -12,17 +12,19 @@ class DependenciesProvider {
     class func provideSongListViewModel() -> SongListViewModel {
         let networkService = NetworkServiceImpl()
         let downloadFileService = DownloadFileServiceImpl()
-        let fileStorageService = FileStorageServiceImpl()
+        let fileManagerService = FileManagerServiceImpl()
+        let audioService = AudioServiceImpl()
         
         let songRepository = SongRepositoryImpl(networkService: networkService, downloadFileService: downloadFileService)
-        let fileRepository = FileRepositoryImpl(fileStorageSerivce: fileStorageService)
         
         let getListSongUseCase = GetListSongUseCaseImpl(songRepository: songRepository)
-        let downLoadSongUseCase = DownloadSongUseCaseImpl(songRepository: songRepository,fileRepository: fileRepository)
+        let downLoadSongUseCase = DownloadSongUseCaseImpl(songRepository: songRepository,
+                                                          fileManagerService: fileManagerService)
+        let playSongUseCase = PlaySongUseCaseImpl(audioService: audioService)
         
         return SongListViewModel(getListSongUseCase: getListSongUseCase,
                                  downloadSongUseCase: downLoadSongUseCase,
-                                 playSongUseCase: PlaySongUseCaseImpl())
+                                 playSongUseCase: playSongUseCase)
     }
     
     class func provideSongListCoordinator() -> SongListCoordinator {
