@@ -6,6 +6,10 @@
 //
 
 import Foundation
+import AVFoundation
+import AVFAudio
+
+var player: AVAudioPlayer?
 
 final class SongListViewModel: ViewModelType {
     
@@ -22,6 +26,8 @@ final class SongListViewModel: ViewModelType {
     private var downloadSongCancellables: [String: Cancellable?] = [:]
     
     private var songs: [Song] = []
+    
+    private var currentPlayIndex: Int? = nil
     
     var loadSongsObservable: (() -> Void)?
     var songStateObservable: ((Int) -> Void)?
@@ -57,10 +63,6 @@ final class SongListViewModel: ViewModelType {
         }
     }
     
-    func getSongs() -> [Song] {
-        return songs
-    }
-    
     func downloadSong(at index: Int) {
         let song = songs[index]
         update(songState: .downloading(0), at: index)
@@ -78,7 +80,7 @@ final class SongListViewModel: ViewModelType {
                 }
                 switch result {
                 case .success(let cacheURL):
-                    self.update(songState: .downloaded, and: cacheURL, at: index)
+                    self.update(songState: .ready, and: cacheURL, at: index)
                     self.downloadSongCancellables[song.url]??.cancel()
                 case .failure(let error):
                     self.errorObservable?(error)
@@ -89,6 +91,55 @@ final class SongListViewModel: ViewModelType {
         downloadSongCancellables[song.url] = cancellable
     }
     
+    func playSong(at index: Int) {
+        playSongUseCase.play(song: songs[index]) { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            
+            switch result {
+            case .success(let isPlaying):
+                guard isPlaying else {
+                    return
+                }
+                if self.currentPlayIndex != nil {
+                    self.update(songState: .ready, at: self.currentPlayIndex!)
+                }
+                
+                self.currentPlayIndex = index
+                self.update(songState: .playing, at: index)
+            case .failure(let error):
+                self.errorObservable?(error)
+            }
+        }
+    }
+    
+    func stopPlay(at index: Int) {
+        playSongUseCase.stopPlaying(completion: { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            
+            switch result {
+            case .success(let isPlaying):
+                guard !isPlaying else {
+                    return
+                }
+                self.update(songState: .ready, at: index)
+            }
+        })
+    }
+}
+
+// MARK: Util funtions
+extension SongListViewModel {
+    func getSongs() -> [Song] {
+        return songs
+    }
+}
+
+// MARK: Private functions
+extension SongListViewModel {
     private func update(songState newState: Song.State, and url: URL? = nil, at index: Int) {
         songs.update(newState, url: url, at: index)
         songStateObservable?(index)

@@ -9,7 +9,7 @@ import Foundation
 
 protocol DownloadSongUseCase {
     var songRepository: SongRepository { get }
-    var fileRepository: FileRepository { get }
+    var fileManagerService: FileManagerService { get }
     
     func downloadSong(
         _ song: Song,
@@ -21,14 +21,11 @@ protocol DownloadSongUseCase {
 final class DownloadSongUseCaseImpl: DownloadSongUseCase {
     
     let songRepository: SongRepository
-    let fileRepository: FileRepository
+    let fileManagerService: FileManagerService
     
-    init(
-        songRepository: SongRepository,
-        fileRepository: FileRepository
-    ) {
+    init(songRepository: SongRepository, fileManagerService: FileManagerService) {
         self.songRepository = songRepository
-        self.fileRepository = fileRepository
+        self.fileManagerService = fileManagerService
     }
     
     func downloadSong(
@@ -45,19 +42,28 @@ final class DownloadSongUseCaseImpl: DownloadSongUseCase {
                 }
                 switch result {
                 case.success(let tmpURL):
-                    self.saveCache(of: song.name.replacingOccurrences(of: " ", with: "").appending(".mp3"),
-                                   tmpURL: tmpURL, completion: completionHandler)
+                    let fileName = song.name.replacingOccurrences(of: " ", with: "_").appending(".mp3")
+                    self.saveCache(of: fileName, in: tmpURL, completion: completionHandler)
                 case .failure(let error):
                     completionHandler(.failure(error))
                 }
             })
     }
     
-    private func saveCache(of fileName: String, tmpURL: URL, completion: @escaping (Result<URL, Error>) -> Void) {
-        fileRepository.saveCache(of: fileName, from: tmpURL, completion: { result in
+    private func saveCache(
+        of fileName: String,
+        in tmpURL: URL,
+        completion: @escaping (Result<URL, Error>) -> Void
+    ) {
+        let cacheDirectory = AppConstants.Document.cacheDirectoryURL
+        fileManagerService.createDirectoryIfNeeded(cacheDirectory, completion: { [weak self] result in
+            guard let self = self else {
+                return
+            }
             switch result {
-            case .success(let cacheURL):
-                completion(.success(cacheURL))
+            case .success:
+                let cacheURL = cacheDirectory.appendingPathComponent(fileName)
+                self.fileManagerService.moveFile(from: tmpURL, to: cacheURL, removedIfDupplicate: true, completion: completion)
             case .failure(let error):
                 completion(.failure(error))
             }

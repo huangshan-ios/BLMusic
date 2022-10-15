@@ -9,7 +9,11 @@ import Foundation
 
 extension Array where Element == Song {
     
-    mutating func update(_ newState: Song.State = .notDownloaded, url: URL? = nil, at index: Int) {
+    mutating func update(_ newState: Song.State = .inCloud, url: URL? = nil, at index: Int) {
+        if url == nil {
+            self[index].change(newState, url: self[index].cacheURL)
+            return
+        }
         self[index].change(newState, url: url)
     }
 

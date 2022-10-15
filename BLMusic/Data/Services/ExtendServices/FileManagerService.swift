@@ -1,5 +1,5 @@
 //
-//  FileStorageService.swift
+//  FileManagerService.swift
 //  BLMusic
 //
 //  Created by Son Hoang on 15/10/2022.
@@ -7,10 +7,23 @@
 
 import Foundation
 
-protocol FileStorageService {
+/*
+ * Actually, we don't need to create this service, we can replace it by a singleton like:
+ 
+    final class FileManagerHelper {
+        static let shared = FileManagerHelper()
+    }
+ 
+ * I just want to create this one cause I want to mock and test the instance will inject this ervice
+ */
+
+protocol FileManagerService {
     var fileManager: FileManager { get }
     
-    func createDirectoryIfNeeded(_ directoryURL: URL, completion: @escaping (Result<Void, Error>) -> Void)
+    func createDirectoryIfNeeded(
+        _ directoryURL: URL,
+        completion: @escaping (Result<Void, Error>) -> Void
+    )
     
     func moveFile(
         from current: URL,
@@ -20,13 +33,9 @@ protocol FileStorageService {
     )
 }
 
-final class FileStorageServiceImpl: FileStorageService {
+final class FileManagerServiceImpl: FileManagerService {
     
-    let fileManager: FileManager
-    
-    init(fileManager: FileManager = FileManager()) {
-        self.fileManager = fileManager
-    }
+    let fileManager = FileManager()
     
     func createDirectoryIfNeeded(
         _ directoryURL: URL,

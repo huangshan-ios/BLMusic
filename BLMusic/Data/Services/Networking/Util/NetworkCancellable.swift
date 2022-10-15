@@ -7,8 +7,7 @@
 
 import Foundation
 
-protocol NetworkCancellable {
-    func cancel()
+protocol NetworkCancellable: Cancellable {
 }
 
 extension URLSessionTask: NetworkCancellable { }

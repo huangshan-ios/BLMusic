@@ -20,6 +20,7 @@ class SongTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         onTapActionButton = nil
+        downloadProgressView.progress = 0
         downloadProgressView.isHidden = true
         songStateImageView.isHidden = false
         songStateImageView.image = nil
@@ -35,7 +36,9 @@ class SongTableViewCell: UITableViewCell {
         
         // TODO: Enhance this one by custom a button class to switching state and also change the progress
         switch songData.state {
-        case .notDownloaded:
+        case .inCloud:
+            downloadProgressView.progress = 0
+            downloadProgressView.isHidden = true
             songStateImageView.isHidden = false
             songStateImageView.image = UIImage(named: "ic_download")
         case .downloading(let progress):
@@ -43,11 +46,14 @@ class SongTableViewCell: UITableViewCell {
             songStateImageView.image = nil
             downloadProgressView.isHidden = false
             downloadProgressView.progress = progress
-        case .downloaded, .notPlaying:
+        case .ready:
+            downloadProgressView.progress = 0
+            downloadProgressView.isHidden = true
             songStateImageView.isHidden = false
             songStateImageView.image = UIImage(named: "ic_play")
-            downloadProgressView.isHidden = true
         case .playing:
+            downloadProgressView.progress = 0
+            downloadProgressView.isHidden = true
             songStateImageView.isHidden = false
             songStateImageView.image = UIImage(named: "ic_pause")
         }
