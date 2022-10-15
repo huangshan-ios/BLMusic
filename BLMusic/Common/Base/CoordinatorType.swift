@@ -11,7 +11,6 @@ protocol Coordinator: AnyObject {
 
     var navigationController: UINavigationController { get set }
     var parentCoordinator: CoordinatorType? { get set }
-    var dependency
     
     func start()
     func start(_ coordinator: CoordinatorType)
