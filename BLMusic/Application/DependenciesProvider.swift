@@ -13,13 +13,11 @@ class DependenciesProvider {
     class func provideSongListViewModel() -> SongListViewModel {
         let networkService = NetworkServiceImpl()
         let downloadFileService = DownloadFileServiceImpl()
-        let fileManagerService = FileManagerServiceImpl()
         let songsStorageImpl = SongsStorageImpl()
         let audioService = AudioServiceImpl()
         
         let songRepository = SongRepositoryImpl(networkService: networkService,
                                                 downloadFileService: downloadFileService,
-                                                fileManagerService: fileManagerService,
                                                 songsStorage: songsStorageImpl)
         
         let getListCacheSongUseCase = GetListCacheSongUseCaseImpl(songRepository: songRepository)

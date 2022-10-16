@@ -8,7 +8,8 @@
 import Foundation
 
 enum DownloadError: Error {
-    case somethingWentWrong
+    case fileExist
     case invalidURL
+    case somethingWentWrong    
     case other(Error)
 }
