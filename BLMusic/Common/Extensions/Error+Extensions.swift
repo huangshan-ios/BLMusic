@@ -23,17 +23,7 @@ extension Error {
         
         if let downloadError = self as? DownloadError {
             switch downloadError {
-            case .somethingWentWrong, .invalidURL:
-                return CommonUIError.somethingWhenWrong
-            case .other(let error):
-                return CommonUIError(id: (error as NSError).code,
-                                     message: error.localizedDescription)
-            }
-        }
-        
-        if let fileStorageError = self as? FileStorageError {
-            switch fileStorageError {
-            case .fileExist, .somethingWentWrong:
+            case .somethingWentWrong, .invalidURL, .fileExist:
                 return CommonUIError.somethingWhenWrong
             case .other(let error):
                 return CommonUIError(id: (error as NSError).code,

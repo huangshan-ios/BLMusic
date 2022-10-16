@@ -38,10 +38,10 @@ final class DownloadSongUseCaseImpl: DownloadSongUseCase {
                     return
                 }
                 switch result {
-                case .success(let tmpURL):
-                    self.saveAudioFileToCache(
-                        songDTO: songDTO,
-                        tmpURL: tmpURL,
+                case .success(let audioCacheURL):
+                    self.saveSongToPersistentStorage(
+                        songDTO,
+                        audioCacheURL: audioCacheURL,
                         completion: completionHandler
                     )
                 case .failure(let error):
@@ -54,33 +54,6 @@ final class DownloadSongUseCaseImpl: DownloadSongUseCase {
 
 // MARK: Private functions
 extension DownloadSongUseCaseImpl {
-    private func saveAudioFileToCache(
-        songDTO: SongDTO,
-        tmpURL: URL,
-        completion: @escaping (Result<URL, Error>) -> Void
-    ) {
-        songRepository.saveAudioFileToCache(
-            of: songDTO,
-            in: tmpURL,
-            completion: { [weak self] result in
-                guard let self = self else {
-                    return
-                }
-                
-                switch result {
-                case .success(let audioCacheURL):
-                    self.saveSongToPersistentStorage(
-                        songDTO,
-                        audioCacheURL: audioCacheURL,
-                        completion: completion
-                    )
-                case .failure(let error):
-                    completion(.failure(error))
-                }
-            }
-        )
-    }
-    
     private func saveSongToPersistentStorage(
         _ songDTO: SongDTO,
         audioCacheURL: URL,

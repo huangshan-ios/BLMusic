@@ -10,7 +10,6 @@ import Foundation
 protocol SongRepository {
     var networkService: NetworkSevice { get }
     var downloadFileService: DownloadFileService { get }
-    var fileManagerService: FileManagerService { get }
     var songsStorage: SongsStorage { get }
     
     func getListLocalSong(completion: @escaping (Result<[SongEntity], Error>) -> Void)
@@ -19,18 +18,14 @@ protocol SongRepository {
         completion: @escaping (Result<[SongDTO], Error>) -> Void
     ) -> Cancellable?
     
+    // TODO: Consider to create Repository for this one
     func downloadSong(
         _ song: SongDTO,
         progressHandler: @escaping (Double) -> Void,
         completionHandler: @escaping (Result<URL, Error>) -> Void
     ) -> Cancellable?
     
-    func saveAudioFileToCache(
-        of song: SongDTO,
-        in tmpURL: URL,
-        completion: @escaping (Result<URL, Error>) -> Void
-    )
-    
+    // TODO: Consider to create Repository for this one
     func saveSongToPersistentStorage(
         _ song: SongDTO,
         audioCacheURL: URL,
@@ -41,18 +36,15 @@ protocol SongRepository {
 final class SongRepositoryImpl: SongRepository {
     let networkService: NetworkSevice
     let downloadFileService: DownloadFileService
-    let fileManagerService: FileManagerService
     let songsStorage: SongsStorage
     
     init(
         networkService: NetworkSevice,
         downloadFileService: DownloadFileService,
-        fileManagerService: FileManagerService,
         songsStorage: SongsStorage
     ) {
         self.networkService = networkService
         self.downloadFileService = downloadFileService
-        self.fileManagerService = fileManagerService
         self.songsStorage = songsStorage
     }
     
@@ -81,41 +73,14 @@ final class SongRepositoryImpl: SongRepository {
     ) -> Cancellable? {
         let task = RepositoryTask()
         task.serviceTask = downloadFileService.downloadFile(
+            fileName: song.audioFileName(),
             from: song.url,
+            to: AppConstants.Document.cacheDirectoryURL,
+            removeIfDupplicate: true,
             progressHandler: progressHandler,
             completionHandler: completionHandler
         )
         return task
-    }
-    
-    func saveAudioFileToCache(
-        of song: SongDTO,
-        in tmpURL: URL,
-        completion: @escaping (Result<URL, Error>) -> Void
-    ) {
-        let cacheDirectory = AppConstants.Document.cacheDirectoryURL
-        let fileName = song.name.replacingOccurrences(of: " ", with: "_").appending(".mp3")
-        let cacheURL = cacheDirectory.appendingPathComponent(fileName)
-        fileManagerService.createDirectoryIfNeeded(
-            cacheDirectory,
-            completion: { [weak self] result in
-                guard let self = self else {
-                    return
-                }
-                
-                switch result {
-                case .success:
-                    self.fileManagerService.moveFile(
-                        from: tmpURL,
-                        to: cacheURL,
-                        removedIfDupplicate: true,
-                        completion: completion
-                    )
-                case .failure(let error):
-                    completion(.failure(error))
-                }
-            }
-        )
     }
     
     func saveSongToPersistentStorage(

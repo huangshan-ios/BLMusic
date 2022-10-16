@@ -53,8 +53,6 @@
 		F73B9BE428FAFA0E00C43A00 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BE328FAFA0E00C43A00 /* UIView+Extensions.swift */; };
 		F73B9BE728FAFDEE00C43A00 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BE628FAFDEE00C43A00 /* CircularProgressView.swift */; };
 		F73B9BEE28FB194900C43A00 /* AudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BED28FB194900C43A00 /* AudioService.swift */; };
-		F73B9BF028FB197700C43A00 /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BEF28FB197700C43A00 /* FileManagerService.swift */; };
-		F73B9BF228FB1BB500C43A00 /* FileStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BF128FB1BB500C43A00 /* FileStorageError.swift */; };
 		F73B9BF428FB1C9B00C43A00 /* AudioError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BF328FB1C9B00C43A00 /* AudioError.swift */; };
 		F73B9BF728FB20D300C43A00 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BF628FB20D300C43A00 /* CoreDataStorage.swift */; };
 		F73B9BFA28FB211400C43A00 /* CoreDataStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F73B9BF828FB211400C43A00 /* CoreDataStorage.xcdatamodeld */; };
@@ -132,8 +130,6 @@
 		F73B9BE328FAFA0E00C43A00 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		F73B9BE628FAFDEE00C43A00 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		F73B9BED28FB194900C43A00 /* AudioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioService.swift; sourceTree = "<group>"; };
-		F73B9BEF28FB197700C43A00 /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
-		F73B9BF128FB1BB500C43A00 /* FileStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorageError.swift; sourceTree = "<group>"; };
 		F73B9BF328FB1C9B00C43A00 /* AudioError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioError.swift; sourceTree = "<group>"; };
 		F73B9BF628FB20D300C43A00 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		F73B9BF928FB211400C43A00 /* CoreDataStorage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataStorage.xcdatamodel; sourceTree = "<group>"; };
@@ -482,8 +478,6 @@
 			children = (
 				F73B9BED28FB194900C43A00 /* AudioService.swift */,
 				F73B9BF328FB1C9B00C43A00 /* AudioError.swift */,
-				F73B9BEF28FB197700C43A00 /* FileManagerService.swift */,
-				F73B9BF128FB1BB500C43A00 /* FileStorageError.swift */,
 			);
 			path = ExtendServices;
 			sourceTree = "<group>";
@@ -706,8 +700,6 @@
 				F73B9B6D28F8518E00C43A00 /* ViewControllerType.swift in Sources */,
 				F73B9BEE28FB194900C43A00 /* AudioService.swift in Sources */,
 				F73B9BC928F88CFE00C43A00 /* DownloadOperation.swift in Sources */,
-				F73B9BF228FB1BB500C43A00 /* FileStorageError.swift in Sources */,
-				F73B9BF028FB197700C43A00 /* FileManagerService.swift in Sources */,
 				F73B9BBF28F884C800C43A00 /* RepositoryTask.swift in Sources */,
 				F73B9BCE28F9032500C43A00 /* DownloadError.swift in Sources */,
 				F73B9BF728FB20D300C43A00 /* CoreDataStorage.swift in Sources */,
