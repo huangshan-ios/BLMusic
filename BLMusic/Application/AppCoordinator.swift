@@ -18,8 +18,8 @@ final class AppCoordinator: CoordinatorType {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
-        let collectionsCoordinator = SongListCoordinator()
-        collectionsCoordinator.navigationController = navigationController
-        start(collectionsCoordinator)
+        let listSongCoordinator = ListSongCoordinator()
+        listSongCoordinator.navigationController = navigationController
+        start(listSongCoordinator)
     }
 }

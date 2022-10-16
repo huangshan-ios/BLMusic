@@ -1,5 +1,5 @@
 //
-//  SongListViewController.swift
+//  ListSongViewController.swift
 //  BLMusic
 //
 //  Created by Son Hoang on 13/10/2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SongListViewController: ViewControllerType<SongListViewModel, SongListCoordinator> {
+class ListSongViewController: ViewControllerType<ListSongViewModel, ListSongCoordinator> {
     
     @IBOutlet weak var listSongTableView: UITableView!
     
@@ -67,7 +67,7 @@ class SongListViewController: ViewControllerType<SongListViewModel, SongListCoor
     }
 }
 
-extension SongListViewController: UITableViewDelegate, UITableViewDataSource {
+extension ListSongViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.getSongs().count
     }

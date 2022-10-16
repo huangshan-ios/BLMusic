@@ -1,5 +1,5 @@
 //
-//  SongListViewModel.swift
+//  ListSongViewModel.swift
 //  BLMusic
 //
 //  Created by Son Hoang on 13/10/2022.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class SongListViewModel: ViewModelType {
+final class ListSongViewModel: ViewModelType {
     
     private let getListCacheSongUseCase: GetListCacheSongUseCase
     private let getListSongUseCase: GetListSongUseCase
@@ -167,14 +167,14 @@ final class SongListViewModel: ViewModelType {
 }
 
 // MARK: Util funtions
-extension SongListViewModel {
+extension ListSongViewModel {
     func getSongs() -> [Song] {
         return songs
     }
 }
 
 // MARK: Private functions
-extension SongListViewModel {
+extension ListSongViewModel {
     private func update(songState newState: Song.State, and url: URL? = nil, at index: Int) {
         songs.update(newState, url: url, at: index)
         songStateObservable?(index)

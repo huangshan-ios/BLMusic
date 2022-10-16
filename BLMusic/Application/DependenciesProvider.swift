@@ -10,7 +10,7 @@ import Foundation
 class DependenciesProvider {
     
     // TODO: Enhance this DI by simple Dependency Injection Stack if more than 2 screens.
-    class func provideSongListViewModel() -> SongListViewModel {
+    class func provideListSongViewModel() -> ListSongViewModel {
         let networkService = NetworkServiceImpl()
         let downloadFileService = DownloadFileServiceImpl()
         let songsStorageImpl = SongsStorageImpl()
@@ -25,13 +25,13 @@ class DependenciesProvider {
         let downLoadSongUseCase = DownloadSongUseCaseImpl(songRepository: songRepository)
         let playSongUseCase = PlaySongUseCaseImpl(audioService: audioService)
         
-        return SongListViewModel(getListCacheSongUseCase: getListCacheSongUseCase,
+        return ListSongViewModel(getListCacheSongUseCase: getListCacheSongUseCase,
                                  getListSongUseCase: getListSongUseCase,
                                  downloadSongUseCase: downLoadSongUseCase,
                                  playSongUseCase: playSongUseCase)
     }
     
-    class func provideSongListCoordinator() -> SongListCoordinator {
-        return SongListCoordinator()
+    class func provideListSongCoordinator() -> ListSongCoordinator {
+        return ListSongCoordinator()
     }
 }
