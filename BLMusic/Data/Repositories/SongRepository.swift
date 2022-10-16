@@ -25,7 +25,17 @@ protocol SongRepository {
         completionHandler: @escaping (Result<URL, Error>) -> Void
     ) -> Cancellable?
     
+    func saveAudioFileToCache(
+        of song: SongDTO,
+        in tmpURL: URL,
+        completion: @escaping (Result<URL, Error>) -> Void
+    )
     
+    func saveSongToPersistentStorage(
+        _ song: SongDTO,
+        audioCacheURL: URL,
+        completion: @escaping (Result<Void, Error>) -> Void
+    )
 }
 
 final class SongRepositoryImpl: SongRepository {
@@ -73,26 +83,12 @@ final class SongRepositoryImpl: SongRepository {
         task.serviceTask = downloadFileService.downloadFile(
             from: song.url,
             progressHandler: progressHandler,
-            completionHandler: { [weak self] result in
-                guard let self = self else {
-                    return
-                }
-                
-                switch result {
-                case.success(let tmpURL):
-                    self.saveCache(of: song, in: tmpURL, completion: completionHandler)
-                case .failure(let error):
-                    completionHandler(.failure(error))
-                }
-            }
+            completionHandler: completionHandler
         )
         return task
     }
-}
-
-// MARK: Private functions
-extension SongRepositoryImpl {
-    private func saveCache(
+    
+    func saveAudioFileToCache(
         of song: SongDTO,
         in tmpURL: URL,
         completion: @escaping (Result<URL, Error>) -> Void
@@ -109,8 +105,7 @@ extension SongRepositoryImpl {
                 
                 switch result {
                 case .success:
-                    self.moveFile(
-                        of: song,
+                    self.fileManagerService.moveFile(
                         from: tmpURL,
                         to: cacheURL,
                         removedIfDupplicate: true,
@@ -123,40 +118,15 @@ extension SongRepositoryImpl {
         )
     }
     
-    private func moveFile(
-        of song: SongDTO,
-        from tmpURL: URL,
-        to cacheURL: URL,
-        removedIfDupplicate: Bool = true,
-        completion: @escaping (Result<URL, Error>) -> Void
+    func saveSongToPersistentStorage(
+        _ song: SongDTO,
+        audioCacheURL: URL,
+        completion: @escaping (Result<Void, Error>) -> Void
     ) {
-        fileManagerService.moveFile(
-            from: tmpURL,
-            to: cacheURL,
-            removedIfDupplicate: removedIfDupplicate,
-            completion: { [weak self] result in
-                guard let self = self else {
-                    return
-                }
-                
-                switch result {
-                case .success(let savedCacheURL):
-                    self.songsStorage.save(
-                        song,
-                        cacheURL: savedCacheURL,
-                        completion: { result in
-                            switch result {
-                            case.success:
-                                completion(.success(savedCacheURL))
-                            case .failure(let error):
-                                completion(.failure(error))
-                            }
-                        }
-                    )
-                case .failure(let error):
-                    completion(.failure(error))
-                }
-            }
+        songsStorage.save(
+            song,
+            cacheURL: audioCacheURL,
+            completion: completion
         )
     }
 }
