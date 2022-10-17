@@ -59,6 +59,7 @@ class ListSongViewController: ViewControllerType<ListSongViewModel, ListSongCoor
             }
             
             DispatchQueue.main.async {
+                // TODO: Improve this one, this will make the scroll doesn't smooth at the last item when download
                 if self.listSongTableView.indexPathsForVisibleRows?.contains(IndexPath(row: index, section: 0)) ?? false {
                     self.listSongTableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
                 }

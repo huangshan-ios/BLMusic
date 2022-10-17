@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol NetworkSevice {
+protocol NetworkService {
     func request<T: Decodable>(
         _ request: NetworkRequest,
         completion: @escaping (Result<T, Error>) -> Void
     ) -> NetworkCancellable?
 }
 
-final class NetworkServiceImpl: NetworkSevice {
+final class NetworkServiceImpl: NetworkService {
     func request<T: Decodable>(
         _ request: NetworkRequest,
         completion: @escaping (Result<T, Error>) -> Void
