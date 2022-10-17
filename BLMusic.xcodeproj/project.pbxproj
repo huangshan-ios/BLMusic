@@ -75,6 +75,10 @@
 		F7E2C69428FD3BB400807E91 /* AudioServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E2C69328FD3BB400807E91 /* AudioServiceMock.swift */; };
 		F7E2C69628FD3E4900807E91 /* DownloadSongUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E2C69528FD3E4900807E91 /* DownloadSongUseCaseTest.swift */; };
 		F7E2C69828FD414800807E91 /* SongRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E2C69728FD414800807E91 /* SongRepositoryTest.swift */; };
+		F7E2C69A28FD420A00807E91 /* NetworkServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E2C69928FD420A00807E91 /* NetworkServiceMock.swift */; };
+		F7E2C69C28FD432700807E91 /* DownloadServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E2C69B28FD432700807E91 /* DownloadServiceMock.swift */; };
+		F7E2C69E28FD43CA00807E91 /* SongsStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E2C69D28FD43CA00807E91 /* SongsStorageMock.swift */; };
+		F7E2C6A028FD486600807E91 /* mockSongs.json in Resources */ = {isa = PBXBuildFile; fileRef = F7E2C69F28FD486600807E91 /* mockSongs.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +173,10 @@
 		F7E2C69328FD3BB400807E91 /* AudioServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioServiceMock.swift; sourceTree = "<group>"; };
 		F7E2C69528FD3E4900807E91 /* DownloadSongUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadSongUseCaseTest.swift; sourceTree = "<group>"; };
 		F7E2C69728FD414800807E91 /* SongRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongRepositoryTest.swift; sourceTree = "<group>"; };
+		F7E2C69928FD420A00807E91 /* NetworkServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceMock.swift; sourceTree = "<group>"; };
+		F7E2C69B28FD432700807E91 /* DownloadServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadServiceMock.swift; sourceTree = "<group>"; };
+		F7E2C69D28FD43CA00807E91 /* SongsStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsStorageMock.swift; sourceTree = "<group>"; };
+		F7E2C69F28FD486600807E91 /* mockSongs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mockSongs.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -564,8 +572,12 @@
 		F73B9C0728FB45FD00C43A00 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				F7E2C69F28FD486600807E91 /* mockSongs.json */,
 				F787E20728FC5003003F65CF /* SongRepositoryMock.swift */,
 				F7E2C69328FD3BB400807E91 /* AudioServiceMock.swift */,
+				F7E2C69928FD420A00807E91 /* NetworkServiceMock.swift */,
+				F7E2C69B28FD432700807E91 /* DownloadServiceMock.swift */,
+				F7E2C69D28FD43CA00807E91 /* SongsStorageMock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -712,6 +724,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7E2C6A028FD486600807E91 /* mockSongs.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,6 +798,8 @@
 				F787E20028FC48B0003F65CF /* ErrorTypeMock.swift in Sources */,
 				F787E20428FC4E09003F65CF /* ListSongViewModelTest.swift in Sources */,
 				F7E2C69428FD3BB400807E91 /* AudioServiceMock.swift in Sources */,
+				F7E2C69E28FD43CA00807E91 /* SongsStorageMock.swift in Sources */,
+				F7E2C69A28FD420A00807E91 /* NetworkServiceMock.swift in Sources */,
 				F7E2C69628FD3E4900807E91 /* DownloadSongUseCaseTest.swift in Sources */,
 				F7E2C68C28FD15F100807E91 /* GetListCacheSongUseCaseTest.swift in Sources */,
 				F787E20E28FC5327003F65CF /* DownloadSongUseCaseMock.swift in Sources */,
@@ -796,6 +811,7 @@
 				F787E20828FC5003003F65CF /* SongRepositoryMock.swift in Sources */,
 				F787E1FE28FC48A1003F65CF /* DataTypeMock.swift in Sources */,
 				F787E20A28FC510B003F65CF /* GetListSongUseCaseMock.swift in Sources */,
+				F7E2C69C28FD432700807E91 /* DownloadServiceMock.swift in Sources */,
 				F7E2C68A28FD08CD00807E91 /* MockSongProvider.swift in Sources */,
 				F7E2C69028FD36AB00807E91 /* GetListSongUseCaseTest.swift in Sources */,
 			);

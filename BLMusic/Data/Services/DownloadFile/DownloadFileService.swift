@@ -8,8 +8,6 @@
 import Foundation
 
 protocol DownloadFileService {
-    var operationQueue: OperationQueue { get }
-    
     func downloadFile(
         fileName: String,
         from url: String,
@@ -22,7 +20,7 @@ protocol DownloadFileService {
 
 final class DownloadFileServiceImpl: DownloadFileService {
     
-    lazy var operationQueue: OperationQueue = {
+    private lazy var operationQueue: OperationQueue = {
         let operationQueue = OperationQueue()
         return operationQueue
     }()

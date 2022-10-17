@@ -30,12 +30,12 @@ protocol SongRepository {
 }
 
 final class SongRepositoryImpl: SongRepository {
-    private let networkService: NetworkSevice
+    private let networkService: NetworkService
     private let downloadFileService: DownloadFileService
     private let songsStorage: SongsStorage
     
     init(
-        networkService: NetworkSevice,
+        networkService: NetworkService,
         downloadFileService: DownloadFileService,
         songsStorage: SongsStorage
     ) {

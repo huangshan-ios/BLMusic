@@ -9,8 +9,6 @@ import Foundation
 import CoreData
 
 protocol SongsStorage {
-    var coreDataStorage: CoreDataStorage { get }
-    
     func getListSongEntity(completion: @escaping (Result<[SongEntity], Error>) -> Void)
     func save(
         _ dto: SongDTO,
@@ -20,7 +18,7 @@ protocol SongsStorage {
 }
 
 final class SongsStorageImpl: SongsStorage {
-    let coreDataStorage: CoreDataStorage
+    private let coreDataStorage: CoreDataStorage
     
     init(coreDataStorage: CoreDataStorage = CoreDataStorage.shared) {
         self.coreDataStorage = coreDataStorage
