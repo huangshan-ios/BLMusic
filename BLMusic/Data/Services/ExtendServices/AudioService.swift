@@ -18,9 +18,7 @@ import AVFAudio
  * I just want to create this one cause I want to mock and test the instance will inject this ervice
  */
 
-protocol AudioService {
-    var audioPlayer: AVAudioPlayer? { get }
-    
+protocol AudioService {    
     func playSong(_ url: URL?, completion: @escaping (Result<Bool, Error>) -> Void)
     func stopPlaying(completion: @escaping (Result<Bool, Never>) -> Void)
 }

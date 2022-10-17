@@ -11,6 +11,7 @@ final class CoreDataStorage {
 
     static let shared = CoreDataStorage()
     
+        
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "CoreDataStorage")
         container.loadPersistentStores { _, error in
@@ -20,6 +21,19 @@ final class CoreDataStorage {
         }
         return container
     }()
+
+    func provideTestContext() -> NSManagedObjectContext {
+        let container = NSPersistentContainer(name: "CoreDataStorage")
+        let description = NSPersistentStoreDescription()
+        description.type = NSInMemoryStoreType
+        container.persistentStoreDescriptions = [description]
+        container.loadPersistentStores { (description, error) in
+            if let error = error {
+                fatalError("Failed to load store for test: \(error)")
+            }
+        }
+        return container.viewContext
+    }
 
     func saveContext() {
         let context = persistentContainer.viewContext

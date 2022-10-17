@@ -13,6 +13,20 @@ struct Song {
         case downloading(Double)
         case ready
         case playing
+        
+        var isOnCloud: Bool {
+            guard case .onCloud = self else {
+                return false
+            }
+            return true
+        }
+        
+        var isReady: Bool {
+            guard case .ready = self else {
+                return false
+            }
+            return true
+        }
     }
     
     let id: String
