@@ -68,6 +68,13 @@
 		F787E20C28FC525C003F65CF /* PlaySongUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F787E20B28FC525C003F65CF /* PlaySongUseCaseMock.swift */; };
 		F787E20E28FC5327003F65CF /* DownloadSongUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F787E20D28FC5327003F65CF /* DownloadSongUseCaseMock.swift */; };
 		F7E2C68A28FD08CD00807E91 /* MockSongProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E2C68928FD08CD00807E91 /* MockSongProvider.swift */; };
+		F7E2C68C28FD15F100807E91 /* GetListCacheSongUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E2C68B28FD15F100807E91 /* GetListCacheSongUseCaseTest.swift */; };
+		F7E2C68E28FD33AE00807E91 /* NSManagedObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E2C68D28FD33AE00807E91 /* NSManagedObject+Extensions.swift */; };
+		F7E2C69028FD36AB00807E91 /* GetListSongUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E2C68F28FD36AB00807E91 /* GetListSongUseCaseTest.swift */; };
+		F7E2C69228FD3B9400807E91 /* PlaySongUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E2C69128FD3B9400807E91 /* PlaySongUseCaseTest.swift */; };
+		F7E2C69428FD3BB400807E91 /* AudioServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E2C69328FD3BB400807E91 /* AudioServiceMock.swift */; };
+		F7E2C69628FD3E4900807E91 /* DownloadSongUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E2C69528FD3E4900807E91 /* DownloadSongUseCaseTest.swift */; };
+		F7E2C69828FD414800807E91 /* SongRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E2C69728FD414800807E91 /* SongRepositoryTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +162,13 @@
 		F787E20B28FC525C003F65CF /* PlaySongUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySongUseCaseMock.swift; sourceTree = "<group>"; };
 		F787E20D28FC5327003F65CF /* DownloadSongUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadSongUseCaseMock.swift; sourceTree = "<group>"; };
 		F7E2C68928FD08CD00807E91 /* MockSongProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSongProvider.swift; sourceTree = "<group>"; };
+		F7E2C68B28FD15F100807E91 /* GetListCacheSongUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetListCacheSongUseCaseTest.swift; sourceTree = "<group>"; };
+		F7E2C68D28FD33AE00807E91 /* NSManagedObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Extensions.swift"; sourceTree = "<group>"; };
+		F7E2C68F28FD36AB00807E91 /* GetListSongUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetListSongUseCaseTest.swift; sourceTree = "<group>"; };
+		F7E2C69128FD3B9400807E91 /* PlaySongUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySongUseCaseTest.swift; sourceTree = "<group>"; };
+		F7E2C69328FD3BB400807E91 /* AudioServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioServiceMock.swift; sourceTree = "<group>"; };
+		F7E2C69528FD3E4900807E91 /* DownloadSongUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadSongUseCaseTest.swift; sourceTree = "<group>"; };
+		F7E2C69728FD414800807E91 /* SongRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongRepositoryTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,6 +358,7 @@
 				F73B9BDD28FADD0100C43A00 /* Error+Extensions.swift */,
 				F73B9BE128FAF38C00C43A00 /* Array+Extensions.swift */,
 				F73B9BE328FAFA0E00C43A00 /* UIView+Extensions.swift */,
+				F7E2C68D28FD33AE00807E91 /* NSManagedObject+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -517,6 +532,10 @@
 			isa = PBXGroup;
 			children = (
 				F73B9C0628FB45F800C43A00 /* Mock */,
+				F7E2C68B28FD15F100807E91 /* GetListCacheSongUseCaseTest.swift */,
+				F7E2C68F28FD36AB00807E91 /* GetListSongUseCaseTest.swift */,
+				F7E2C69128FD3B9400807E91 /* PlaySongUseCaseTest.swift */,
+				F7E2C69528FD3E4900807E91 /* DownloadSongUseCaseTest.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -525,6 +544,7 @@
 			isa = PBXGroup;
 			children = (
 				F73B9C0728FB45FD00C43A00 /* Mock */,
+				F7E2C69728FD414800807E91 /* SongRepositoryTest.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -545,6 +565,7 @@
 			isa = PBXGroup;
 			children = (
 				F787E20728FC5003003F65CF /* SongRepositoryMock.swift */,
+				F7E2C69328FD3BB400807E91 /* AudioServiceMock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -738,6 +759,7 @@
 				F73B9BDE28FADD0100C43A00 /* Error+Extensions.swift in Sources */,
 				F73B9B7D28F8577600C43A00 /* CoordinatorType.swift in Sources */,
 				F73B9B2D28F81B8000C43A00 /* AppDelegate.swift in Sources */,
+				F7E2C68E28FD33AE00807E91 /* NSManagedObject+Extensions.swift in Sources */,
 				F73B9BB028F86D9F00C43A00 /* SongMapper.swift in Sources */,
 				F73B9B9528F860F600C43A00 /* NetworkError.swift in Sources */,
 				F73B9B9828F8625700C43A00 /* ListSongViewModel.swift in Sources */,
@@ -762,14 +784,20 @@
 			files = (
 				F787E20028FC48B0003F65CF /* ErrorTypeMock.swift in Sources */,
 				F787E20428FC4E09003F65CF /* ListSongViewModelTest.swift in Sources */,
+				F7E2C69428FD3BB400807E91 /* AudioServiceMock.swift in Sources */,
+				F7E2C69628FD3E4900807E91 /* DownloadSongUseCaseTest.swift in Sources */,
+				F7E2C68C28FD15F100807E91 /* GetListCacheSongUseCaseTest.swift in Sources */,
 				F787E20E28FC5327003F65CF /* DownloadSongUseCaseMock.swift in Sources */,
 				F787E1FC28FC4815003F65CF /* Mockable.swift in Sources */,
 				F787E20628FC4ED9003F65CF /* GetListCacheSongUseCaseMock.swift in Sources */,
 				F787E20C28FC525C003F65CF /* PlaySongUseCaseMock.swift in Sources */,
+				F7E2C69228FD3B9400807E91 /* PlaySongUseCaseTest.swift in Sources */,
+				F7E2C69828FD414800807E91 /* SongRepositoryTest.swift in Sources */,
 				F787E20828FC5003003F65CF /* SongRepositoryMock.swift in Sources */,
 				F787E1FE28FC48A1003F65CF /* DataTypeMock.swift in Sources */,
 				F787E20A28FC510B003F65CF /* GetListSongUseCaseMock.swift in Sources */,
 				F7E2C68A28FD08CD00807E91 /* MockSongProvider.swift in Sources */,
+				F7E2C69028FD36AB00807E91 /* GetListSongUseCaseTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

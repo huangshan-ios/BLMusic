@@ -29,4 +29,24 @@ class MockSongProvider {
             )
         }
     }
+    
+    class func provideCacheSongEntities(numOfItems: Int, cacheURL: String) -> [SongEntity] {
+        return (0...numOfItems).map { index in
+            let entity: SongEntity = SongEntity(testContext: CoreDataStorage.shared.provideTestContext())
+            entity.id = "\(index)"
+            entity.name = "Response Song \(index)"
+            entity.url = "https://google.com/Song\(index)"
+            entity.cacheURL = URL(string: "\(cacheURL)/Song_\(index)")
+            return entity
+        }
+    }
+    
+    class func provideSongDTOs(numOfItems: Int) -> [SongDTO] {
+        return (0...numOfItems).map { index in
+            return SongDTO(id: "\(index)",
+                           name: "Cache Song \(index)",
+                           url: "https://google.com/Song\(index)"
+            )
+        }
+    }
 }
