@@ -11,12 +11,6 @@ import Foundation
 
 final class DownloadSongUseCaseMock: DownloadSongUseCase, Mockable {
     
-    let songRepository: SongRepository
-    
-    init(songRepository: SongRepository) {
-        self.songRepository = songRepository
-    }
-    
     var listMock: [MockType] = []
     
     enum MockType {

@@ -45,7 +45,7 @@ final class ListSongViewModel: ViewModelType {
         self.playSongUseCase = playSongUseCase
     }
     
-    func loadCacheSongs() {
+    func loadSongs() {
         loadingObservable?(true)
         getListCacheSongUseCase.getListCacheSong { [weak self] result in
             guard let self = self else {
@@ -61,27 +61,6 @@ final class ListSongViewModel: ViewModelType {
                 self.errorObservable?(error)
             }
         }
-    }
-    
-    func loadNewSongs(baseOn cacheSongs: [Song]) {
-        getListSongCancellable = getListSongUseCase.getListSong(
-            baseOn: cacheSongs,
-            completion: { [weak self] result in
-                guard let self = self else {
-                    return
-                }
-                
-                switch result {
-                case.success(let songs):
-                    self.songs = songs
-                    self.loadSongsObservable?()
-                case .failure(let error):
-                    self.errorObservable?(error)
-                }
-                self.loadingObservable?(false)
-                self.getListSongCancellable = nil
-            }
-        )
     }
     
     func downloadSong(at index: Int) {
@@ -175,6 +154,27 @@ extension ListSongViewModel {
 
 // MARK: Private functions
 extension ListSongViewModel {
+    private func loadNewSongs(baseOn cacheSongs: [Song]) {
+        getListSongCancellable = getListSongUseCase.getListSong(
+            baseOn: cacheSongs,
+            completion: { [weak self] result in
+                guard let self = self else {
+                    return
+                }
+                
+                switch result {
+                case.success(let songs):
+                    self.songs = songs
+                    self.loadSongsObservable?()
+                case .failure(let error):
+                    self.errorObservable?(error)
+                }
+                self.loadingObservable?(false)
+                self.getListSongCancellable = nil
+            }
+        )
+    }
+    
     private func update(songState newState: Song.State, and url: URL? = nil, at index: Int) {
         songs.update(newState, url: url, at: index)
         songStateObservable?(index)

@@ -8,10 +8,6 @@
 import Foundation
 
 protocol SongRepository {
-    var networkService: NetworkSevice { get }
-    var downloadFileService: DownloadFileService { get }
-    var songsStorage: SongsStorage { get }
-    
     func getListLocalSong(completion: @escaping (Result<[SongEntity], Error>) -> Void)
     
     func getListSong(
@@ -34,9 +30,9 @@ protocol SongRepository {
 }
 
 final class SongRepositoryImpl: SongRepository {
-    let networkService: NetworkSevice
-    let downloadFileService: DownloadFileService
-    let songsStorage: SongsStorage
+    private let networkService: NetworkSevice
+    private let downloadFileService: DownloadFileService
+    private let songsStorage: SongsStorage
     
     init(
         networkService: NetworkSevice,

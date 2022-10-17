@@ -8,8 +8,6 @@
 import Foundation
 
 protocol DownloadSongUseCase {
-    var songRepository: SongRepository { get }
-    
     func downloadSong(
         _ song: Song,
         progressHander: @escaping (Double) -> Void,
@@ -18,7 +16,7 @@ protocol DownloadSongUseCase {
 }
 
 final class DownloadSongUseCaseImpl: DownloadSongUseCase {
-    let songRepository: SongRepository
+    private let songRepository: SongRepository
     
     init(songRepository: SongRepository) {
         self.songRepository = songRepository

@@ -12,9 +12,12 @@ final class SongMapper {
         return Song(id: dto.id, name: dto.name, url: dto.url)
     }
     
+    // This logic doesn't required but I want to think that only id and audio is remain, name and url can be change from the response
     class func nestedMap(_ dto: SongDTO) -> (Song) -> Song {
         return { cacheSong in
-            return Song(id: dto.id, name: dto.name, url: dto.url, state: .ready, cacheURL: cacheSong.cacheURL)
+            return Song(id: dto.id, name: dto.name,
+                        url: dto.url, state: .ready,
+                        cacheURL: cacheSong.cacheURL)
         }
     }
     

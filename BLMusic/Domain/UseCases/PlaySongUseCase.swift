@@ -7,15 +7,13 @@
 
 import Foundation
 
-protocol PlaySongUseCase {
-    var audioService: AudioService { get }
-    
+protocol PlaySongUseCase {    
     func play(song: Song, completion: @escaping (Result<Bool, Error>) -> Void)
     func stopPlaying(completion: @escaping (Result<Bool, Never>) -> Void)
 }
 
 final class PlaySongUseCaseImpl: PlaySongUseCase {
-    let audioService: AudioService
+    private let audioService: AudioService
     
     init(audioService: AudioService) {
         self.audioService = audioService

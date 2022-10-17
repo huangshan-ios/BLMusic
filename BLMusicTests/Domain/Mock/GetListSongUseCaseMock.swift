@@ -12,13 +12,7 @@ import Foundation
 @testable import BLMusic
 
 final class GetListSongUseCaseMock: GetListSongUseCase, Mockable {
-    
-    let songRepository: SongRepository
-    
-    init(songRepository: SongRepository) {
-        self.songRepository = songRepository
-    }
-    
+
     var listMock: [MockType] = []
     
     enum MockType {
@@ -48,8 +42,10 @@ final class GetListSongUseCaseMock: GetListSongUseCase, Mockable {
                 if !cacheSongs.isEmpty {
                     for cacheSong in cacheSongs {
                         if let indexSongDTO = songs.firstIndex(where: { $0.id == cacheSong.id }) {
+                            let responseSong = songs[indexSongDTO]
+                            let newSong = Song(id: responseSong.id, name: responseSong.name, url: responseSong.url, state: .ready, cacheURL: cacheSong.cacheURL)
                             newSongs.remove(at: indexSongDTO)
-                            newSongs.insert(cacheSong, at: indexSongDTO)
+                            newSongs.insert(newSong, at: indexSongDTO)
                         }
                     }
                 }

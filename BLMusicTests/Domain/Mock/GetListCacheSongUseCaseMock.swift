@@ -11,12 +11,6 @@ import Foundation
 
 final class GetListCacheSongUseCaseMock: GetListCacheSongUseCase, Mockable {
     
-    let songRepository: SongRepository
-    
-    init(songRepository: SongRepository) {
-        self.songRepository = songRepository
-    }
-    
     var listMock: [MockType] = []
     
     enum MockType {

@@ -10,20 +10,7 @@ import Foundation
 @testable import BLMusic
 
 final class SongRepositoryMock: SongRepository, Mockable {
-    let networkService: NetworkSevice
-    let downloadFileService: DownloadFileService
-    let songsStorage: SongsStorage
     
-    init(
-        networkService: NetworkSevice,
-        downloadFileService: DownloadFileService,
-        songsStorage: SongsStorage
-    ) {
-        self.networkService = networkService
-        self.downloadFileService = downloadFileService
-        self.songsStorage = songsStorage
-    }
-            
     var listMock: [MockType] = []
     
     enum MockType {

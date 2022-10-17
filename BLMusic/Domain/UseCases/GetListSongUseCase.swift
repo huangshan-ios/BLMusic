@@ -8,8 +8,6 @@
 import Foundation
 
 protocol GetListSongUseCase {
-    var songRepository: SongRepository { get }
-    
     func getListSong(
         baseOn cacheSongs: [Song],
         completion: @escaping (Result<[Song], Error>) -> Void
@@ -17,7 +15,7 @@ protocol GetListSongUseCase {
 }
 
 final class GetListSongUseCaseImpl: GetListSongUseCase {
-    let songRepository: SongRepository
+    private let songRepository: SongRepository
     
     init(songRepository: SongRepository) {
         self.songRepository = songRepository

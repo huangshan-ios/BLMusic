@@ -67,6 +67,7 @@
 		F787E20A28FC510B003F65CF /* GetListSongUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F787E20928FC510B003F65CF /* GetListSongUseCaseMock.swift */; };
 		F787E20C28FC525C003F65CF /* PlaySongUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F787E20B28FC525C003F65CF /* PlaySongUseCaseMock.swift */; };
 		F787E20E28FC5327003F65CF /* DownloadSongUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F787E20D28FC5327003F65CF /* DownloadSongUseCaseMock.swift */; };
+		F7E2C68A28FD08CD00807E91 /* MockSongProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E2C68928FD08CD00807E91 /* MockSongProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +154,7 @@
 		F787E20928FC510B003F65CF /* GetListSongUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetListSongUseCaseMock.swift; sourceTree = "<group>"; };
 		F787E20B28FC525C003F65CF /* PlaySongUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySongUseCaseMock.swift; sourceTree = "<group>"; };
 		F787E20D28FC5327003F65CF /* DownloadSongUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadSongUseCaseMock.swift; sourceTree = "<group>"; };
+		F7E2C68928FD08CD00807E91 /* MockSongProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSongProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -534,6 +536,7 @@
 				F787E20928FC510B003F65CF /* GetListSongUseCaseMock.swift */,
 				F787E20B28FC525C003F65CF /* PlaySongUseCaseMock.swift */,
 				F787E20D28FC5327003F65CF /* DownloadSongUseCaseMock.swift */,
+				F7E2C68928FD08CD00807E91 /* MockSongProvider.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -766,6 +769,7 @@
 				F787E20828FC5003003F65CF /* SongRepositoryMock.swift in Sources */,
 				F787E1FE28FC48A1003F65CF /* DataTypeMock.swift in Sources */,
 				F787E20A28FC510B003F65CF /* GetListSongUseCaseMock.swift in Sources */,
+				F7E2C68A28FD08CD00807E91 /* MockSongProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
