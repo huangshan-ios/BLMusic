@@ -13,7 +13,7 @@ class ListSongViewController: ViewControllerType<ListSongViewModel, ListSongCoor
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.loadCacheSongs()
+        viewModel.loadSongs()
     }
     
     override func setupViews() {

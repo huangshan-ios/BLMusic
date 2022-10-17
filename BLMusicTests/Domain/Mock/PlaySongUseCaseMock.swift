@@ -11,12 +11,6 @@ import Foundation
 
 final class PlaySongUseCaseMock: PlaySongUseCase, Mockable {
     
-    let audioService: AudioService
-    
-    init(audioService: AudioService) {
-        self.audioService = audioService
-    }
-    
     var listMock: [MockType] = []
     
     enum MockType {

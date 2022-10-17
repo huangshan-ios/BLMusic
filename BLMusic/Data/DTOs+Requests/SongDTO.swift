@@ -17,6 +17,6 @@ struct SongDTO: Decodable {
     }
     
     func audioFileName() -> String {
-        return "\(name.replacingOccurrences(of: " ", with: "_")).mp3"
+        return "\(id).mp3"
     }
 }
